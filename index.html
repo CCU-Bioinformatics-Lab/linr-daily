@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度總覽</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#fff; --border:#e6e4df; --ink:#1a1917; --muted:#6b6862;
+  --accent:#b8543a; --grid:#efeeea;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+    --accent:#e08265; --grid:#28282e;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+  --accent:#e08265; --grid:#28282e;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--bg);color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.7;font-size:15px}
+.wrap{max-width:900px;margin:0 auto}
+header{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:2rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+h1{margin:0;font-size:2rem;letter-spacing:-.02em;font-weight:650}
+.sub{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;margin:0 0 2rem}
+.tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem}
+.tile .n{font-size:1.6rem;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+   margin:2.25rem 0 .9rem;font-weight:600}
+.spark{display:flex;align-items:flex-end;gap:3px;height:64px;background:var(--panel);
+  border:1px solid var(--border);border-radius:10px;padding:.75rem;overflow-x:auto}
+.spark i{display:block;flex:1 0 8px;min-width:8px;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85}
+.spark i:hover{opacity:1}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+   font-weight:600;padding:.5rem .6rem;border-bottom:1px solid var(--border)}
+td{padding:.6rem;border-bottom:1px solid var(--grid);vertical-align:top}
+tbody tr:hover{background:var(--panel)}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.date{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.titles{color:var(--muted);font-size:.85rem}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);
+  font-size:.75rem;color:var(--muted)}
+@media(max-width:600px){h1{font-size:1.5rem} .titles{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab</p>
+  <h1>工作進度總覽</h1>
+  <p class="sub">共 1 天記錄 · 更新於 2026-08-20 00:01</p>
+</header>
+
+<div class="tiles">
+  <div class="tile"><div class="n">1</div><div class="l">記錄天數</div></div>
+  <div class="tile"><div class="n">5</div><div class="l">工作階段</div></div>
+  <div class="tile"><div class="n">4</div><div class="l">累計小時</div></div>
+  <div class="tile"><div class="n">242</div><div class="l">日均分鐘</div></div>
+</div>
+
+<h2>每日活躍時間</h2>
+<div class="spark"><i style="height:100%" title="2026-08-19 · 242 分鐘"></i></div>
+
+<h2>全部報告</h2>
+<table>
+  <thead><tr><th>日期</th><th>內容</th><th class="num">階段</th><th class="num">分鐘</th></tr></thead>
+  <tbody><tr><td class="date"><a href="2026-08-19.html">2026-08-19</a></td><td class="titles">建立統一技能架構、進度自動歸檔與委派框架 / 驗證每日進度報告的產出與抽取邊界 / 盤點研究程式碼庫並接上伺服器端資料 / 在伺服器上部署 Claude Code 並複製工作規範 / 確認伺服器端 Claude Code 的登入與啟動方式 / HTML 預覽 / 讀取 GitHub 資料 / 移動 skill 和 clade.md / Server登入與Claude code呼叫</td><td class="num">5</td><td class="num">242</td></tr></tbody>
+</table>
+
+<footer>由 daily-progress-report skill 產生</footer>
+
+</div>
+</body>
+</html>
