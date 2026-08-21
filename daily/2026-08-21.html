@@ -87,27 +87,25 @@ a{color:var(--accent)}
 </div>
 
 <h2>摘要</h2>
-<div class="narrative"><p>今天的重心是<strong>讓每日進度管線正式上線</strong>：報告首次推上公開的進度 repo、對齊實驗室的 repo 慣例，並把工作記錄的來源延伸到實驗室伺服器。</p>
-<p>發布面：把 2026-08-19 的報告推上進度 repo，之後比對另一位成員的 daily repo 逐項對齊設定——關閉 Wiki、報告收進 <code>daily/</code> 子目錄、README 補上版面說明，發布腳本同步改路徑並以 dry run 驗證。接著驗證了 HTML 在 GitHub 上的三種開啟途徑：blob 頁只顯示原始碼是設計使然（<code>text/plain</code>），透過代理服務可正確渲染，正式入口則建議開 GitHub Pages。</p>
-<p>伺服器面：設計了每日日誌回傳的流程——伺服器端的工作日誌在每天固定時間彙整、摘要當天發生的事並標註 error/warning，回傳後併入當日進度報告，隨後發布。排程已註冊，管線設定也記入持久記憶供之後的 session 接手。</p>
-<p>其餘是知識工具與學習：把一個課程網站濃縮成單檔初學者筆記、把外部的學術閱讀工作流教材蒸餾成 <code>literature-reading</code> skill 納入 plugin、盤點實驗室 GitHub 的整體實驗流程並統整檢體量測流程、以互動視覺化上了一堂 EC 與 MCMC 的入門課。</p>
-<p>過程中處理的問題：</p>
-<ul>
-<li>PowerShell 5.1 以 <code>-File</code> 執行腳本時，<code>$PSScriptRoot</code> 在參數預設值裡是空字串導致 <code>Split-Path</code> 失敗；改以 <code>&amp;</code> 呼叫則正常。腳本的路徑預設值不能假設呼叫方式</li>
-<li>GitHub 的 raw 網址刻意以 <code>text/plain</code> 回應防 XSS，確認這不是設定問題，正確做法是換渲染途徑而非嘗試繞過</li>
-</ul>
-<p>明天要接的：確認兩個排程（日誌彙整與報告發布）在無人值守下實際跑起來，並檢查伺服器日誌有沒有如期回傳。</p></div>
+<div class="narrative"><p>今天的重心是<strong>把貝氏推論的四個核心主題做成可自學的互動講義</strong>。</p>
+<p>從一篇中文入門文章出發，為初學者講解貝氏統計，把專有名詞逐一拆開解釋，並整理成 HTML 講義方便閱讀。接著沿同一條線補上 MCMC、EM 與變分推論三份，四份講義都發布為可分享的頁面，形成一組完整的入門系列。</p>
+<p>伺服器端：每日日誌彙整排程於深夜啟動，確認遠端家目錄的工作日誌自 2026-08-20 23:42 後未再更新，因此當天沒有新的伺服器活動可併入報告。</p>
+<p>明天要接的：確認伺服器日誌彙整的產出確實併入每日報告，並補上無人值守時的敘事產生方式——目前排程只跑抽取與渲染，敘事仍需要模型在迴圈內。</p></div>
 
 <h2>工作階段</h2>
 <div class="card">
-  <h3>Daily server worklog digest</h3>
+  <h3>伺服器日誌彙整排程執行</h3>
   <p class="meta">23:04–23:04 · 活躍 0 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
-  
+  <ul class="did"><li>排程於深夜啟動，連線遠端家目錄清點工作日誌</li>
+<li>確認最新日誌停在 2026-08-20 23:42，當天無新增活動可併入</li></ul>
 </div>
 <div class="card">
-  <h3>貝葉斯統計入門教學</h3>
+  <h3>貝氏推論入門系列：四份互動講義</h3>
   <p class="meta">13:57–21:05 · 活躍 69 分鐘 · <code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
-  
+  <ul class="did"><li>從中文入門文章出發，為初學者講解貝氏統計並逐一解釋專有名詞</li>
+<li>把內容整理成 HTML 講義，改以互動方式呈現而非靜態文字</li>
+<li>沿同一條線補上 MCMC、EM 與變分推論三份，構成完整入門系列</li>
+<li>四份講義皆發布為可分享頁面</li></ul>
 </div>
 
 <h2>工具使用</h2>
