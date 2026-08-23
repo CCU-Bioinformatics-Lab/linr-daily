@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-23</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#fff; --border:#e6e4df; --ink:#1a1917; --muted:#6b6862;
+  --accent:#b8543a; --accent-soft:#f5e9e5; --grid:#efeeea;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+    --accent:#e08265; --accent-soft:#3a2620; --grid:#28282e;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+  --accent:#e08265; --accent-soft:#3a2620; --grid:#28282e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:2.5rem 1.25rem 4rem; background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.7; font-size:15px;
+}
+.wrap{max-width:900px;margin:0 auto}
+header{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:2rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+h1{margin:0;font-size:2rem;letter-spacing:-.02em;font-weight:650}
+.sub{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;margin:0 0 2rem}
+.tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem}
+.tile .n{font-size:1.6rem;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+   margin:2.25rem 0 .9rem;font-weight:600}
+.narrative{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+  border-radius:8px;padding:1.1rem 1.3rem}
+.narrative p{margin:0 0 .85rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 .85rem;padding-left:1.2rem} .narrative li{margin:.25rem 0}
+.narrative strong{font-weight:650}
+.narrative code{background:var(--accent-soft);padding:.1em .35em;border-radius:4px;font-size:.88em}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  padding:1rem 1.15rem;margin-bottom:.75rem}
+.card h3{margin:0 0 .2rem;font-size:1rem;font-weight:620}
+.meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta code{background:var(--grid);padding:.1em .4em;border-radius:4px}
+.did{margin:.8rem 0 0;padding:.7rem 0 0 1.15rem;border-top:1px solid var(--border);font-size:.89rem}
+.did li{margin:.3rem 0}
+.did li::marker{color:var(--accent)}
+.bars{display:flex;flex-direction:column;gap:.35rem}
+.bar{display:grid;grid-template-columns:9rem 1fr 2.5rem;gap:.6rem;align-items:center;font-size:.83rem}
+.bar .track{height:7px;background:var(--grid);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:4px}
+.bar .v{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.files{columns:2;column-gap:1.5rem;font-size:.83rem;color:var(--muted);margin:0;padding-left:1.1rem}
+.files li{break-inside:avoid;margin:.15rem 0}
+.warn{background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;
+  padding:.75rem 1rem;font-size:.83rem;margin-bottom:1.5rem}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);
+  font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+@media(max-width:600px){
+  .files{columns:1} .bar{grid-template-columns:7rem 1fr 2.2rem} h1{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-23</h1>
+  <p class="sub">星期日 · 產生於 2026-08-24 00:03</p>
+</header>
+
+
+
+<div class="tiles">
+  <div class="tile"><div class="n">5</div><div class="l">工作階段</div></div>
+  <div class="tile"><div class="n">69</div><div class="l">活躍分鐘</div></div>
+  <div class="tile"><div class="n">83</div><div class="l">工具呼叫</div></div>
+  <div class="tile"><div class="n">8</div><div class="l">觸及檔案</div></div>
+</div>
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是<strong>回頭校正方法論的判斷</strong> — 把整套研究指引與教材讀完，然後推翻自己前一輪的結論，再用負對照推翻新結論的一半。</p>
+<p><strong>做成了什麼</strong></p>
+<ul>
+<li>完整讀完八頁研究指引與十餘個教材模組。讀完之後<strong>主動收回前一輪「上帝視角」評估裡的三項判斷</strong> — 其中最嚴重的一項是誤判「兩份規格之間的介面沒有東西在守」，實際上已有一份專門處理該循環依賴的模型規格，開宗明義就在解這個問題。</li>
+<li>依規格的硬性契約建立全域基準，並把契約寫成可執行的檢查程式。第一次跑<strong>檢查失敗</strong>，追下去發現是自己的 bug：統計時把非 active 的位點也算了進去，導致分布多出一個假的零峰。修掉之後契約成立，基準才算數。</li>
+<li>把基準當先驗接回局部推論，結果看起來有效。<strong>但沒有就此收工</strong> — 先驗權重下得很重，無法分辨解析度是資料給的還是先驗貼上去的。照規格建議的作法做負對照（打亂結構、保持權重），<strong>結果推翻了正面結果的一半</strong>。</li>
+<li>每日進度報告管線首次由排程完整自主跑完並發布。前一晚遇到的「沿用舊敘事」問題沒有重演；排程自己察覺了跨午夜的日期陷阱，改以剛結束的那一天為目標，並在動手前先確認該日報告尚未存在。</li>
+</ul>
+<p><strong>遇到的問題</strong></p>
+<ul>
+<li><strong>跨午夜的日期語意</strong>：排程在 23:51 觸發但延遲到 00:21 才實際動作，此時系統時鐘已經跨日。排程自行判斷應該彙整的是剛結束的那一天而非時鐘上的「今天」。這是設計上的隱含假設第一次被真實情況踩到，而它被正確處理了。</li>
+<li><strong>伺服器日誌連續三天無新內容</strong>：日誌彙整排程已連續兩次回報「查無新進度」。更麻煩的是判斷依據本身有問題 — 現行判準看檔案修改時間，但每輪彙整自己會附加段落回寫，等於自己替自己「續命」，之後永遠會判成「有更新」。<strong>這個判準需要改成看是否有彙整區塊以外的新內容。</strong></li>
+</ul>
+<p><strong>明天要接什麼</strong></p>
+<ul>
+<li>負對照推翻的那一半結論要重做 — 需要弄清楚哪一部分是資料支持的、哪一部分是先驗的產物。</li>
+<li>修掉日誌彙整的 mtime 判準，改用內容差異判斷。</li>
+<li>伺服器端仍有兩項待處理的容量與遺留檔案警告，沿用自先前的彙整，狀態未確認。</li>
+</ul></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>排程首次自主完成前一日報告的產出與發布</h3>
+  <p class="meta">00:21–00:27 · 活躍 6 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>排程 23:51 觸發、00:21 才實際動作，已跨午夜；<strong>自行判定應彙整的是剛結束的那一天</strong>而非系統時鐘的「今天」，並先確認該日報告尚未存在才動手</li>
+<li>敘事、各工作階段成果、渲染、索引更新全程自主完成，前一晚「沿用舊敘事」的失效模式沒有重演</li>
+<li>發布前逐項自我檢查：日期正確、每張階段卡片有各自的標題與條目、無主機名／帳號／路徑／樣本識別，秘密掃描通過後才推送</li></ul>
+</div>
+<div class="card">
+  <h3>本日報告排程啟動</h3>
+  <p class="meta">23:51–23:51 · 活躍 0 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>當日進度報告排程於 23:51 觸發，開始抽取本日活動資料</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器日誌彙整：發現判斷準則本身失效</h3>
+  <p class="meta">23:05–23:06 · 活躍 2 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>連續第二次回報遠端日誌<strong>查無新工作內容</strong>，實質內容已停在三天前</li>
+<li>追出判準的結構性缺陷：現行以檔案修改時間判斷是否更新，但每輪彙整會把摘要附加回同一個檔案，等於<strong>自己替自己續命</strong>，之後會永遠判成「有更新」</li>
+<li>提出修正方向 — 改以「是否存在彙整區塊以外的新內容」作為判準</li>
+<li>沿用先前的兩項待確認警告：一處儲存空間已達高水位，另有一個疑似遺留的大型檔案待擁有者確認</li></ul>
+</div>
+<div class="card">
+  <h3>確認排程產出的報告並在瀏覽器中驗收</h3>
+  <p class="meta">00:22–00:27 · 活躍 5 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>察覺報告排程<strong>正在執行中</strong>，主動退開避免兩邊同時寫同一批檔案</li>
+<li>等待排程產出後開啟本機預覽伺服器逐項驗收：日期、階段卡片內容、無敏感資訊外洩</li>
+<li>確認渲染完成但發布步驟尚未執行，回報實際狀態而非假定成功</li></ul>
+</div>
+<div class="card">
+  <h3>讀完全套研究指引後推翻自己的前一輪評估，再用負對照推翻新結論的一半</h3>
+  <p class="meta">21:24–22:50 · 活躍 61 分鐘 · <code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>完整讀完八頁研究指引與十餘個教材模組，<strong>主動收回前一輪「上帝視角」評估中的三項判斷</strong></li>
+<li>最嚴重的一項誤判：認為兩份規格之間的介面無人負責，實際上已有一份專門處理該循環依賴的模型規格，第一節就在解這個問題</li>
+<li>依規格的硬性契約建立全域基準，並把契約寫成可執行檢查程式；<strong>第一次跑檢查失敗</strong>，追出是自己的統計把非 active 的位點也算了進去，造成分布多出一個假峰</li>
+<li>修掉 bug 後契約成立，基準才採用；接回局部推論後結果看起來有效</li>
+<li><strong>沒有就此收工</strong> — 判定先驗權重過重、無法分辨解析度來自資料還是先驗，遂依規格建議做負對照（打亂結構、保持權重）</li>
+<li>負對照<strong>推翻了正面結果的一半</strong>，如實回報而非只呈現有利的那半</li></ul>
+</div>
+
+<h2>工具使用</h2>
+<div class="bars"><div class="bar"><span>Bash</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">53</span></div>
+<div class="bar"><span>PowerShell</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="v">13</span></div>
+<div class="bar"><span>Read</span><span class="track"><span class="fill" style="width:13%"></span></span><span class="v">7</span></div>
+<div class="bar"><span>Write</span><span class="track"><span class="fill" style="width:6%"></span></span><span class="v">3</span></div>
+<div class="bar"><span>mcp__Claude_Browser__navigate</span><span class="track"><span class="fill" style="width:4%"></span></span><span class="v">2</span></div>
+<div class="bar"><span>mcp__Claude_Browser__preview_start</span><span class="track"><span class="fill" style="width:2%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>SendUserFile</span><span class="track"><span class="fill" style="width:2%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>Grep</span><span class="track"><span class="fill" style="width:2%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__scheduled-tasks__list_scheduled_tasks</span><span class="track"><span class="fill" style="width:2%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__Claude_Browser__get_page_text</span><span class="track"><span class="fill" style="width:2%"></span></span><span class="v">1</span></div></div>
+
+<h2>觸及的檔案</h2>
+<ul class="files"><li>.claude\...\memory\daily-log-pipeline.md</li>
+<li>AppData\...\scratchpad\digest-2026-08-23.md</li>
+<li>Admin\...\data\2026-08-22.json</li>
+<li>Admin\...\data\2026-08-23.json</li>
+<li>Admin\...\narrative\2026-08-21.md</li>
+<li>Admin\...\narrative\2026-08-22.md</li>
+<li>Admin\...\reports\2026-08-22.html</li>
+<li>Admin\...\sessions\2026-08-21.json</li></ul>
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
