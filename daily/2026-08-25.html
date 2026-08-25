@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-25</title>
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#fff; --border:#e6e4df; --ink:#1a1917; --muted:#6b6862;
+  --accent:#b8543a; --accent-soft:#f5e9e5; --grid:#efeeea;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+    --accent:#e08265; --accent-soft:#3a2620; --grid:#28282e;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
+  --accent:#e08265; --accent-soft:#3a2620; --grid:#28282e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:2.5rem 1.25rem 4rem; background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.7; font-size:15px;
+}
+.wrap{max-width:900px;margin:0 auto}
+header{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:2rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+h1{margin:0;font-size:2rem;letter-spacing:-.02em;font-weight:650}
+.sub{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;margin:0 0 2rem}
+.tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem}
+.tile .n{font-size:1.6rem;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+   margin:2.25rem 0 .9rem;font-weight:600}
+.narrative{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+  border-radius:8px;padding:1.1rem 1.3rem}
+.narrative p{margin:0 0 .85rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 .85rem;padding-left:1.2rem} .narrative li{margin:.25rem 0}
+.narrative strong{font-weight:650}
+.narrative code{background:var(--accent-soft);padding:.1em .35em;border-radius:4px;font-size:.88em}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  padding:1rem 1.15rem;margin-bottom:.75rem}
+.card h3{margin:0 0 .2rem;font-size:1rem;font-weight:620}
+.meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.meta code{background:var(--grid);padding:.1em .4em;border-radius:4px}
+.did{margin:.8rem 0 0;padding:.7rem 0 0 1.15rem;border-top:1px solid var(--border);font-size:.89rem}
+.did li{margin:.3rem 0}
+.did li::marker{color:var(--accent)}
+.bars{display:flex;flex-direction:column;gap:.35rem}
+.bar{display:grid;grid-template-columns:9rem 1fr 2.5rem;gap:.6rem;align-items:center;font-size:.83rem}
+.bar .track{height:7px;background:var(--grid);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:4px}
+.bar .v{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.files{columns:2;column-gap:1.5rem;font-size:.83rem;color:var(--muted);margin:0;padding-left:1.1rem}
+.files li{break-inside:avoid;margin:.15rem 0}
+.warn{background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;
+  padding:.75rem 1rem;font-size:.83rem;margin-bottom:1.5rem}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);
+  font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+@media(max-width:600px){
+  .files{columns:1} .bar{grid-template-columns:7rem 1fr 2.2rem} h1{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-25</h1>
+  <p class="sub">星期二 · 產生於 2026-08-25 23:51</p>
+</header>
+
+<div class="warn"><strong>已脫敏：</strong>long-blob x1 — 這些內容在抽取階段就被移除，未寫入本檔。</div>
+
+<div class="tiles">
+  <div class="tile"><div class="n">5</div><div class="l">工作階段</div></div>
+  <div class="tile"><div class="n">401</div><div class="l">活躍分鐘</div></div>
+  <div class="tile"><div class="n">701</div><div class="l">工具呼叫</div></div>
+  <div class="tile"><div class="n">68</div><div class="l">觸及檔案</div></div>
+</div>
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是把聯合參數估計流程往前推一段，並把進度整理成教材風格的簡報。</p>
+<p><strong>流程進度</strong>：完成 stage 3 的 het-pileup 拿到 μ；把置換次數提高到 100 次，並讓 θ 真正帶入 n₁ 接上 Layer A 的積分概似，重跑 stage 2；補上 M 的收斂檢查與 (b)(c) 兩項驗收。另外從頭到尾跑了一次完整流程（用一筆病人腫瘤資料當唯讀測試），並與實驗室既有的公開教材／程式碼比對，確認沒有偏離。</p>
+<p><strong>修正一個重複出現的機制誤述</strong>：三份簡報裡都寫著「profile 概似偏袒分量多的候選，因為分量多代表自由度多」，經查證是錯的——profile 只看峰頂、marginal 才需要為峰寬付出代價，真正被罰的是「有效支撐」而非分量數。用列舉函式只回傳最小尺寸解、因此同一個單位內所有候選的頂點數必然相同（近六千個單位逐一核對、無例外）證實了這點，三處都已改正並加上更正說明。</p>
+<p><strong>簡報產出</strong>：把進度簡報改寫成教材的三段式敘事（白話→直覺類比→嚴謹定義），圖表全面改成 SVG 風格，修好過程中因插頁造成的編號重複與失效的交叉引用（改用標題引用取代頁碼引用，以後插頁不會再壞）。傍晚跑完的結果補寫成三張新投影片，附加進三份簡報並同步修掉裡面的機制誤述。</p>
+<p><strong>其他</strong>：修好一份損毀的權限設定檔（少一個逗號導致整份規則靜默失效），已備妥更新交給使用者自行套用；發布了前一天（08-24）的進度報告，並對內部方法代號做了自動規則抓不到的手動脫敏；每日伺服器工作日誌巡檢發現日誌已 5 天未更新但伺服器端其實有密集活動，已標記待補記並把變更偵測方式從時間戳改成內容雜湊。</p>
+<p><strong>待接</strong>：α(T,z) 拓樸綁定的實作方向已釐清，簡報與流程都已對齊今天的最新結果；明天可以從這裡繼續深入拓樸綁定的驗證。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>執行每日進度報告產生與發布流程</h3>
+  <p class="meta">23:51–23:51 · 活躍 0 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>抽取當天活動、撰寫敘事與各階段成果、渲染並發布報告</li></ul>
+</div>
+<div class="card">
+  <h3>每日伺服器工作日誌巡檢，發現日誌與實際活動不同步</h3>
+  <p class="meta">23:04–23:27 · 活躍 2 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>獨立活動探針偵測到伺服器端過去 24 小時有密集檔案異動，但工作日誌已 5 天未更新，標記待補記</li>
+<li>把日誌變更偵測方式從檔案時間戳改成內容雜湊，本輪為新基準值</li></ul>
+</div>
+<div class="card">
+  <h3>修好損毀的權限設定並發布前一天的進度報告</h3>
+  <p class="meta">00:00–00:08 · 活躍 8 分鐘 · <code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>找出並修好權限設定檔裡少一個逗號造成的非法 JSON（此前所有自訂規則因此靜默失效），備妥更新檔交使用者自行套用</li>
+<li>對 08-24 報告的內部方法代號做自動規則抓不到的手動脫敏後發布</li></ul>
+</div>
+<div class="card">
+  <h3>推進聯合參數估計流程並產出教材風格進度簡報</h3>
+  <p class="meta">15:25–23:51 · 活躍 249 分鐘 · <code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>完成 stage 3 het-pileup 取得 μ；置換次數提高到 100 次並讓 θ 帶入 n₁ 接上積分概似，重跑 stage 2</li>
+<li>把進度簡報改寫成教材三段式敘事並全面改成 SVG 圖表風格</li>
+<li>實作 α(T,z) 拓樸綁定的方向並釐清可行性</li>
+<li>修好插頁造成的投影片編號重複，以及兩處失效的交叉引用（改用標題引用避免再壞）</li>
+<li>修好簡報排版中兩處元素重疊的問題</li></ul>
+</div>
+<div class="card">
+  <h3>釐清卡住的問題、跑通全流程並修正簡報中的機制誤述</h3>
+  <p class="meta">12:40–23:45 · 活躍 252 分鐘 · <code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>把待解問題依「已知/未知 × 完成/未完成」四象限整理，並補上各自的卡住原因</li>
+<li>補上 stage 2 的 M 收斂檢查與 (b)(c) 兩項驗收，背景執行多輪重跑</li>
+<li>用一筆病患腫瘤資料從頭到尾跑一次完整流程做唯讀驗證，並與實驗室既有教材／公開程式碼比對確認無偏離</li>
+<li>查證並修正三份簡報中重複出現的機制誤述：概似函數真正懲罰的是「有效支撐」而非分量數，以近六千個單位的逐一核對佐證</li>
+<li>把當天流程結果整理成三張新投影片，附加進三份簡報並同步更新受影響的敘述</li></ul>
+</div>
+
+<h2>工具使用</h2>
+<div class="bars"><div class="bar"><span>Bash</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">230</span></div>
+<div class="bar"><span>Edit</span><span class="track"><span class="fill" style="width:67%"></span></span><span class="v">155</span></div>
+<div class="bar"><span>mcp__Claude_Browser__javascript_tool</span><span class="track"><span class="fill" style="width:32%"></span></span><span class="v">74</span></div>
+<div class="bar"><span>Read</span><span class="track"><span class="fill" style="width:23%"></span></span><span class="v">52</span></div>
+<div class="bar"><span>PowerShell</span><span class="track"><span class="fill" style="width:22%"></span></span><span class="v">50</span></div>
+<div class="bar"><span>mcp__Claude_Browser__resize_window</span><span class="track"><span class="fill" style="width:13%"></span></span><span class="v">29</span></div>
+<div class="bar"><span>Write</span><span class="track"><span class="fill" style="width:11%"></span></span><span class="v">26</span></div>
+<div class="bar"><span>SendUserFile</span><span class="track"><span class="fill" style="width:10%"></span></span><span class="v">23</span></div>
+<div class="bar"><span>mcp__Claude_Browser__navigate</span><span class="track"><span class="fill" style="width:10%"></span></span><span class="v">22</span></div>
+<div class="bar"><span>Grep</span><span class="track"><span class="fill" style="width:8%"></span></span><span class="v">18</span></div>
+<div class="bar"><span>mcp__Claude_Browser__computer</span><span class="track"><span class="fill" style="width:3%"></span></span><span class="v">7</span></div>
+<div class="bar"><span>mcp__Claude_Browser__preview_start</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="v">2</span></div>
+<div class="bar"><span>ToolSearch</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="v">2</span></div>
+<div class="bar"><span>mcp__ccd_session_mgmt__search_session_transcripts</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="v">2</span></div>
+<div class="bar"><span>Skill</span><span class="track"><span class="fill" style="width:1%"></span></span><span class="v">2</span></div>
+<div class="bar"><span>mcp__ccd_session_mgmt__get_session</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__Claude_Browser__get_page_text</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>WebFetch</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__scheduled-tasks__list_scheduled_tasks</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__ccd_session_mgmt__list_events</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__Claude_Browser__tabs_select</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div>
+<div class="bar"><span>mcp__scheduled-tasks__update_scheduled_task</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="v">1</span></div></div>
+
+<h2>觸及的檔案</h2>
+<ul class="files"><li>.claude\...\daily-progress-report-publish\SKILL.md</li>
+<li>.claude\...\daily-server-worklog-digest\SKILL.md</li>
+<li>.claude\...\.claude\settings.local.json</li>
+<li>.claude\...\assets\viewport-base.css</li>
+<li>AppData\...\scratchpad\worklog_append_20260825.md</li>
+<li>AppData\...\scratchpad\settings.local.json</li>
+<li>AppData\...\scratchpad\feas.py</li>
+<li>AppData\...\scratchpad\feas2.py</li>
+<li>AppData\...\scratchpad\fix.pl</li>
+<li>AppData\...\scratchpad\space.pl</li>
+<li>AppData\...\scratchpad\term.pl</li>
+<li>AppData\...\tasks\bbawz43jf.output</li>
+<li>AppData\...\tasks\bniuqq3t3.output</li>
+<li>AppData\...\t1\pg-01.png</li>
+<li>AppData\...\t1\pg-02.png</li>
+<li>AppData\...\t1\pg-03.png</li>
+<li>AppData\...\t1\pg-04.png</li>
+<li>AppData\...\t1\pg-05.png</li>
+<li>AppData\...\t1\pg-06.png</li>
+<li>AppData\...\t1\pg-07.png</li>
+<li>AppData\...\t1\pg-08.png</li>
+<li>AppData\...\t1\pg-09.png</li>
+<li>AppData\...\t1\pg-10.png</li>
+<li>AppData\...\t1\pg-11.png</li>
+<li>AppData\...\t1\pg-13.png</li>
+<li>AppData\...\t1\pg-15.png</li>
+<li>AppData\...\t1\pg-22.png</li>
+<li>AppData\...\t1\pg-24.png</li>
+<li>AppData\...\t1\pg-26.png</li>
+<li>AppData\...\t1\pg-28.png</li>
+<li>AppData\...\t1\pg-30.png</li>
+<li>AppData\...\t1\pg-31.png</li>
+<li>AppData\...\t1\pg-33.png</li>
+<li>AppData\...\t1\pg-35.png</li>
+<li>AppData\...\t1\pg-37.png</li>
+<li>AppData\...\t1\pg-38.png</li>
+<li>AppData\...\t1\pg-39.png</li>
+<li>AppData\...\t1\pg-41.png</li>
+<li>AppData\...\t1\pg-43.png</li>
+<li>AppData\...\scratchpad\s3agg.py</li>
+<li>AppData\...\scratchpad\s3an.py</li>
+<li>AppData\...\scratchpad\s4.py</li>
+<li>AppData\...\scratchpad\s5.py</li>
+<li>AppData\...\scratchpad\s6.py</li>
+<li>AppData\...\scratchpad\stage2.py</li>
+<li>Admin\...\server 實驗\20260824_方法提案_stage0_abstain普查與阻塞_01.md</li>
+<li>Admin\...\server 實驗\20260824_方法提案_stage3_可行性探路_01.md</li>
+<li>Admin\...\server 實驗\20260824_週工作彙整_0818-0824_01.standalone.html</li>
+<li>Admin\...\server 實驗\20260825_C3多起點重驗與病因定位_01.md</li>
+<li>Admin\...\server 實驗\20260825_stage2驗收a_全域綁定held-out檢驗_01.md</li>
+<li>Admin\...\server 實驗\20260825_stage2驗收bc與M收斂_01.md</li>
+<li>Admin\...\server 實驗\20260825_全鏈唯讀追溯_檢體到最終結果_01.md</li>
+<li>Admin\...\server 實驗\20260825_兩session合併對帳_01.md</li>
+<li>Admin\...\server 實驗\20260825_教材與本週工作對照_01.standalone.html</li>
+<li>Admin\...\server 實驗\20260827_方法進度簡報_教材風格_01.html</li>
+<li>Admin\...\server 實驗\20260827_教材方法對帳簡報_01.html</li>
+<li>Admin\...\server 實驗\20260827_教材方法對帳簡報_圖解版_01.html</li>
+<li>Admin\...\server 實驗\CLAUDE.md</li>
+<li>Admin\...\images\howto-six-steps.svg</li>
+<li>Admin\...\server 實驗\RESEARCH-PROTOCOL.md</li>
+<li>Admin\...\scripts\rk_multistart.py</li>
+<li>Admin\...\scripts\rk_stage2.py</li>
+<li>Admin\...\scripts\rk_stage2bc.py</li>
+<li>Admin\...\server 實驗\主題一下篇.pdf</li>
+<li>Admin\...\data\2026-08-24.json</li>
+<li>Admin\...\narrative\2026-08-24.md</li>
+<li>Admin\...\sessions\2026-08-24.json</li>
+<li>Admin\...\daily-progress-report\SKILL.md</li></ul>
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
