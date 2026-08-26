@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-26</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-26</h1>
+  <p class="sub">星期三 · 產生於 2026-08-26 23:52</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天有兩條線。一條把<strong>每日進度報告的管線</strong>從「能跑」推到「抽取正確、而且呈現得起對外公開」；另一條把一份<strong>簡報</strong>從一列清單改寫成有主張、有共同軸、有結論的論證。</p>
+<p><strong>每日報告管線</strong></p>
+<p>發布結構改成依週歸檔（週資料夾／日期檔），三支腳本改由同一個共用模組計算週次 — 三者要是算出不同資料夾，就會發布出總覽連不到的報告。已發布的部分用 <code>git mv</code> 搬移保留歷史，逐檔確認每份只動了返回連結那一行；本機沒有摘要檔的兩天刻意不重新渲染，免得把已發布的內容洗成空白。跨週那天在隔離副本裡實際跑過，新的週資料夾會自動建立。</p>
+<p>接著修掉兩個會讓報告內容失真的問題。<strong>一個是重複計數</strong>：同一個工作階段在兩個檔案裡各出現一次，卡片因此整排錯位，統計也被灌大；改成以 id 去重之後，回頭把各日的標題與條目重新對齊。<strong>另一個是時區</strong>：抽取器原本按 UTC 日期字串前綴過濾，跟本地日期差八小時，早上的工作會被算進前一天。修完之後，兩支獨立實作的抽取器在兩個日期上完全吻合 — 這是今天最有說服力的一個訊號。</p>
+<p>同時把抽取層換成能一併掃到另一套工具的版本（原本的實作完全看不到那些工作階段），並把一套日報寫作方法論寫進技能文件：四步流程、主題合併的判準（「同一天」「同一個 repo」都不算理由）、兩段式抽取、證據選擇表、狀態詞彙表。</p>
+<p>呈現上換成與週報簡報同一套視覺語言，但維持這組頁面原本「零對外請求」的設計前提 — 只沿用配色與版面，不引入外部字型，否則每個瀏覽者都會被第三方記錄。依先前的決定，所有活躍度指標（頂部數字磚、工具長條圖、卡片上的時間區間）一併移除，總覽從數字表格改成卡片列表。七天份報告與總覽重新渲染發布，等線上重建後實際開啟驗證過。</p>
+<p><strong>簡報：從清單變成論證</strong></p>
+<p>先寫完整份講稿（每頁「畫面 → 逐字稿 → 轉場 → 被問到怎麼答」），與投影片逐條核對零不符。寫的過程反而抓到簡報本身五處內容錯誤，最嚴重的一處把兩個分母不同的數字劃上等號 — 這是<strong>把寫講稿當成校對手段</strong>的意外收穫。</p>
+<p>配色改用實際取像素值比對而不是目測，發現原本的分色把來源圖的分野抹掉了；最後統一成語意分色，上下兩層一致，並回頭改掉三處因此失效的圖說。中段十頁重寫成「問題 → 解方」的分段。</p>
+<p>被問到「內容很空虛」時，先量版面再回答：標準 16:9 下內容佔比正常，只有接近正方形的視窗才會出現大片留白 — 所以問題不在版面。實際的缺口有兩個：<strong>整份沒有結論頁</strong>（三條邊界只活在問答附錄裡），<strong>也沒有開場的主張頁</strong>（全場最強的一句只用講的）。補上主張頁、共同軸頁、結論頁三張之後，中段那一串才從清單變成論證。結論頁後來又重畫一次，從三欄文字改成一條四站的鏈、中間立一道牆，「卡在哪」不用讀文字就看得出來。</p>
+<p><strong>驗證與誠實性</strong></p>
+<p>伺服器端的對照實驗跑完之後，簡報最後一頁從「還沒解的問題」改寫成實測結果；相鄰那頁不改內容，改成時序關係而不是彼此矛盾。同時掃出四處現在式的斷言在補跑之後會變成「會被念出口的假話」，只做時態範圍化，內容一字未改。交付前另外自查出兩件事並修掉：一個統計量會隨抽樣數機械性改善，所以它並非參數無關；報告的小數位數超過量測解析度撐得住的精度。</p>
+<p><strong>其他</strong></p>
+<p>伺服器工作日誌的每日彙整判定為「有工作但未寫入日誌」 — 日誌主體的雜湊與上次相同，但獨立的活動探針顯示過去 24 小時仍有大量檔案異動、橫跨多個實驗目錄，日誌也已一週沒有建立新檔。</p>
+<p><strong>卡在哪、明天接什麼</strong></p>
+<ul>
+<li>兩支長時間的計算還在跑，共用機器的負載被壓到平常的兩倍，速度慢了一半</li>
+<li>結論要做成三張圖（機制、適用範圍、可用範圍與設定對照），今天只起了頭</li>
+<li>早幾天的兩份摘要是從已發布頁面反解回來的，粗體與行內程式碼靠標籤反推，語意有沒有走樣還沒有人工確認</li>
+</ul></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>修掉卡片錯位，報告視覺改版並回填發布七天</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>追出卡片錯位的成因是同一個工作階段被重複計入（同一個 id 在兩個檔案裡各出現一次，也把統計灌大），在抽取階段加上以 id 去重</li>
+<li>逐日重新對齊各階段的標題與條目，並補寫一張原本會退回顯示聊天標題的卡片</li>
+<li>版面換成與週報簡報同一套視覺語言，但維持「零對外請求」的設計前提，不引入外部字型</li>
+<li>依先前的決定移除所有活躍度指標：頂部數字磚、工具長條圖、卡片上的時間區間；總覽從數字表格改成卡片列表</li>
+<li>七天份報告與總覽全部重新渲染發布，等線上頁面重建後實際開啟驗證</li></ul>
+</div>
+<div class="card">
+  <h3>報告改為依週歸檔，並確認跨週會自動接上</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發布結構從單層日期檔改成「週資料夾／日期檔」，三支腳本改由同一個共用模組計算週次，避免算出不同資料夾而發布出總覽連不到的報告</li>
+<li>已發布的報告用 <code>git mv</code> 搬移保留歷史，逐檔比對確認每份只改了返回連結那一行</li>
+<li>本機沒有摘要檔的兩天刻意不重新渲染，避免把已發布的內容洗成空白</li>
+<li>在隔離副本裡跑過跨週那天，確認新的週資料夾會自動建立；連帶修好排程的自我檢查步驟仍指向舊路徑的問題</li>
+<li>發布前確認站內連結全數可解析、秘密掃描乾淨</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器工作日誌彙整：判定有工作但未入帳</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>日誌主體的雜湊與上次記錄相同，表示沒有新的手寫內容</li>
+<li>獨立的活動探針顯示過去 24 小時仍有大量檔案異動、橫跨多個實驗目錄，因此判定為「有工作但未寫入日誌」</li>
+<li>一併標註日誌已一週未建立新檔，提醒補記錄</li></ul>
+</div>
+<div class="card">
+  <h3>日報寫作方法論落地，抽取層換版並修掉時區漏算</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>把一套外部方法論寫進技能文件：四步流程、主題合併的判準（「同一天」「同一個 repo」都不算理由）、兩段式抽取、證據選擇表、狀態詞彙表</li>
+<li>抽取層換成能一併掃到另一套工具的版本 — 原本的實作完全看不到那些工作階段</li>
+<li>修掉時區漏算：原本按 UTC 日期字串前綴過濾，與本地日期差八小時，早上的工作會被算進前一天</li>
+<li>修掉在特定 shell 版本下，子行程只要往錯誤串流寫東西就中止整支腳本的問題</li>
+<li>交叉驗證兩支獨立實作的抽取器：修正後在兩個日期上完全吻合</li></ul>
+</div>
+<div class="card">
+  <h3>今日進度報告的產生與發布</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>抽取當日活動、撰寫全日摘要與各階段成果，渲染並發布本頁</li></ul>
+</div>
+<div class="card">
+  <h3>講稿完成，並從寫作過程中抓出簡報五處內容錯誤</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>寫完整份講稿：每頁「畫面 → 逐字稿 → 轉場 → 被問到怎麼答」，與投影片逐條核對，沒有不符或越界的頁碼引用</li>
+<li>寫作過程中比對出簡報五處內容錯誤，其中一處把兩個分母不同的數字劃上等號，全部改掉</li>
+<li>配色改用實際取像素值比對而不是目測，發現原本的分色把來源圖的分野抹掉了</li>
+<li>改成語意分色後，順手改掉三處因此失效的圖說與講詞</li></ul>
+</div>
+<div class="card">
+  <h3>實驗跑完，最後一頁重寫並補上兩處誠實性修正</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>伺服器端的對照實驗跑完，最後一頁從「還沒解的問題」改寫成實測結果；相鄰的舊頁不改內容，改成時序關係而不是彼此矛盾</li>
+<li>掃出四處現在式的斷言在補跑之後會變成會被念出口的假話，只做時態範圍化，內容一字未改</li>
+<li>交付前自查出兩件事並修掉：一個統計量會隨抽樣數機械性改善，因此並非參數無關；報告的小數位數超過量測解析度撐得住的精度</li>
+<li>每次改動後重跑整份結構驗證 — 這類檔案最容易無聲截斷，其他檢查都攔不到</li></ul>
+</div>
+<div class="card">
+  <h3>配色統一成語意分色，中段改寫成「問題 → 解方」</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>兩層圖形改用同一組語意配色，比對實際渲染值確認上下層完全一致</li>
+<li>追出有三格看起來是空的，成因是淺色主題下那個色票與頁面底色同色</li>
+<li>中段十頁重寫成「問題 → 解方」的分段框架，講稿同步改成同一個框架</li></ul>
+</div>
+<div class="card">
+  <h3>補上主張頁與結論頁，把中段從清單變成論證</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>先量版面再回答：標準 16:9 下內容佔比正常，接近正方形的視窗才會出現大片留白 — 所以「空虛」不是版面問題</li>
+<li>診斷出兩個結構缺口：整份沒有結論頁（三條邊界只活在問答附錄裡），也沒有開場的主張頁（全場最強的一句只用講的）</li>
+<li>補上主張頁、共同軸頁、結論頁三張，中段那一串因此從清單變成有共同軸的論證</li>
+<li>結論頁再重畫一次：從三欄文字改成一條四站的鏈，中間立一道牆，「卡在哪」不用讀文字就看得出來</li>
+<li>驗證全部頁面載入、附註資料可解析、逐格掃描文字沒有溢出邊界</li></ul>
+</div>
+<div class="card">
+  <h3>移除導覽性文字，並發現同名檔案有兩份</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>追出使用者看的是另一個目錄下的同名檔案，工作目錄那份先前已改過 — 兩份同步處理</li>
+<li>刪掉每頁左下的翻頁提示，連同它的樣式與列印規則一起清乾淨，不留空的 class</li>
+<li>刪掉純導覽用的圖說，帶內容的那幾段保留</li></ul>
+</div>
+<div class="card">
+  <h3>刪掉固定在左下角的翻頁提示</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>刪掉元素本身與它專用的樣式規則，並從小螢幕的選擇器清單移除</li>
+<li>開瀏覽器確認渲染正常，右下角的出處與頁碼不受影響</li>
+<li>指出另外三份簡報也有同一段提示，等指示再一起處理</li></ul>
+</div>
+<div class="card">
+  <h3>清掉四段導覽圖說並驗證結構完整</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>刪掉四段以「讀法是」開頭的導覽圖說</li>
+<li>驗證殘留字串為零、圖與圖說的標籤配對平衡</li>
+<li>預覽環境不能翻頁，改用結構檢查確認被改的那頁沒有斷裂</li></ul>
+</div>
+<div class="card">
+  <h3>對照實驗跑完一組設定並寫成報告</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>原本的假設被資料否掉，改追「這一層的鑑別力跑到哪裡去了」</li>
+<li>預設設定那一組跑完並寫成報告：新增的那一層不是雜訊，但沒有改變勝出的解</li>
+<li>另外兩支還在跑 — 共用機器的負載被壓到平常的兩倍，速度慢了一半</li>
+<li>開始把結論做成三張圖：機制、適用範圍、可用範圍與設定對照</li></ul>
+</div>
+<div class="card">
+  <h3>講稿與簡報六處同步，最後一頁改成參考材料的敘述形式</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>補跑之後有四處時間詞與新結果打架，鎖住時間範圍讓兩種讀法都成立</li>
+<li>講稿六處同步，其中「不要講的話」那張對照表原本反過來會害講者講錯</li>
+<li>最後一頁改成「短對比句 →『所以』收尾 → 細節進補充框」的四拍形式</li>
+<li>使用者自己加進圖說的但書一個字都沒動；量出溢出十一像素後用合併重複段落解決，而不是猜著調</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
