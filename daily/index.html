@@ -5,52 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>工作進度總覽</title>
 <style>
+/* Editorial Light — 與每日報告、週報簡報同一套視覺語言。
+   同樣不連外部字型：零對外請求是這組頁面的設計前提。 */
 :root{
-  --bg:#fbfbfa; --panel:#fff; --border:#e6e4df; --ink:#1a1917; --muted:#6b6862;
-  --accent:#b8543a; --grid:#efeeea;
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
-    --accent:#e08265; --grid:#28282e;
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#17171a; --panel:#1f1f23; --border:#33333a; --ink:#ecebe8; --muted:#9a978f;
-  --accent:#e08265; --grid:#28282e;
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
 }
 *{box-sizing:border-box}
-body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--bg);color:var(--ink);
+body{margin:0;padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg);color:var(--ink);
   font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  line-height:1.7;font-size:15px}
-.wrap{max-width:900px;margin:0 auto}
-header{border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:2rem}
-.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
-h1{margin:0;font-size:2rem;letter-spacing:-.02em;font-weight:650}
-.sub{color:var(--muted);font-size:.85rem;margin-top:.5rem}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;margin:0 0 2rem}
-.tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem}
-.tile .n{font-size:1.6rem;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.tile .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
-h2{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-   margin:2.25rem 0 .9rem;font-weight:600}
-.spark{display:flex;align-items:flex-end;gap:3px;height:64px;background:var(--panel);
-  border:1px solid var(--border);border-radius:10px;padding:.75rem;overflow-x:auto}
-.spark i{display:block;flex:1 0 8px;min-width:8px;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85}
-.spark i:hover{opacity:1}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-th{text-align:left;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-   font-weight:600;padding:.5rem .6rem;border-bottom:1px solid var(--border)}
-td{padding:.6rem;border-bottom:1px solid var(--grid);vertical-align:top}
-tbody tr:hover{background:var(--panel)}
-td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.date{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
-.titles{color:var(--muted);font-size:.85rem}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);
-  font-size:.75rem;color:var(--muted)}
-@media(max-width:600px){h1{font-size:1.5rem} .titles{display:none}}
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto}
+
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- report list: one card per day, no metrics columns -- */
+.list{display:flex;flex-direction:column;gap:.55rem}
+.entry{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--panel);border-radius:12px;padding:1.05rem 1.3rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+  transition:background .15s ease, transform .15s ease;
+}
+.entry:hover{background:var(--panel-2);transform:translateY(-1px)}
+.entry .d{font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:-.015em;
+  font-size:1.02rem;color:var(--accent)}
+.entry .t{color:var(--muted);font-size:.86rem;margin-top:.3rem;line-height:1.6}
+.empty{background:var(--container);border-radius:12px;padding:1.05rem 1.3rem;color:var(--dim);font-size:.9rem}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim)}
 </style>
 </head>
 <body>
@@ -59,30 +66,17 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);
 <header>
   <p class="eyebrow">CCU Bioinformatics Lab</p>
   <h1>工作進度總覽</h1>
-  <p class="sub">共 7 天記錄 · 更新於 2026-08-26 02:40</p>
+  <p class="sub">共 7 天記錄 · 更新於 2026-08-26 15:27</p>
 </header>
 
-<div class="tiles">
-  <div class="tile"><div class="n">7</div><div class="l">記錄天數</div></div>
-  <div class="tile"><div class="n">37</div><div class="l">工作階段</div></div>
-  <div class="tile"><div class="n">20.6</div><div class="l">累計小時</div></div>
-  <div class="tile"><div class="n">177</div><div class="l">日均分鐘</div></div>
-</div>
-
-<h2>每日活躍時間</h2>
-<div class="spark"><i style="height:60%" title="2026-08-19 · 242 分鐘"></i><i style="height:30%" title="2026-08-20 · 119 分鐘"></i><i style="height:17%" title="2026-08-21 · 69 分鐘"></i><i style="height:47%" title="2026-08-22 · 187 分鐘"></i><i style="height:17%" title="2026-08-23 · 69 分鐘"></i><i style="height:38%" title="2026-08-24 · 151 分鐘"></i><i style="height:100%" title="2026-08-25 · 401 分鐘"></i></div>
-
 <h2>全部報告</h2>
-<table>
-  <thead><tr><th>日期</th><th>內容</th><th class="num">階段</th><th class="num">分鐘</th></tr></thead>
-  <tbody><tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-25.html">2026-08-25</a></td><td class="titles">執行每日進度報告產生與發布流程 / 每日伺服器工作日誌巡檢，發現日誌與實際活動不同步 / 修好損毀的權限設定並發布前一天的進度報告 / 推進聯合參數估計流程並產出教材風格進度簡報 / 釐清卡住的問題、跑通全流程並修正簡報中的機制誤述 / Daily server worklog digest / Daily progress report publish / 伺服器資料比對方法 / 現在還能做什麼</td><td class="num">5</td><td class="num">401</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-24.html">2026-08-24</a></td><td class="titles">排程自主完成前一日報告的產出與發布 / 伺服器端工作日誌彙整與權限規則整理 / 本日報告排程啟動 / 驗收已發布的進度報告 / 提出新版方法提案並產出教材風格版本 / 提案可行性探查與近七天工作彙整 / 新版提案撰寫（API 過載中斷的前段） / Daily server worklog digest / Daily progress report publish / HTML 預覽 / 伺服器資料比對方法 / 現在還能做什麼 / 伺服器資料比對方法</td><td class="num">7</td><td class="num">151</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-23.html">2026-08-23</a></td><td class="titles">排程首次自主完成前一日報告的產出與發布 / 本日報告排程啟動 / 伺服器日誌彙整：發現判斷準則本身失效 / 確認排程產出的報告並在瀏覽器中驗收 / 讀完全套研究指引後推翻自己的前一輪評估，再用負對照推翻新結論的一半 / Daily progress report publish / Daily server worklog digest / HTML 預覽 / 伺服器資料比對方法</td><td class="num">5</td><td class="num">69</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-22.html">2026-08-22</a></td><td class="titles">每日進度報告排程：修正跨午夜的日期歸屬問題 / 伺服器日誌彙整排程執行 / 伺服器日誌彙整排程執行（第二次） / 修好每日進度報告管線的敘事失效問題 / 驗證聯合估計方法在伺服器資料上的可行性 / 驗證聯合估計方法在伺服器資料上的可行性（前段） / Daily server worklog digest / Daily server worklog digest / HTML 預覽 / 伺服器資料比對方法 / 伺服器資料比對方法</td><td class="num">6</td><td class="num">187</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-21.html">2026-08-21</a></td><td class="titles">伺服器日誌彙整排程執行 / 貝氏推論入門系列：四份互動講義 / 貝葉斯統計入門教學</td><td class="num">2</td><td class="num">69</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-20.html">2026-08-20</a></td><td class="titles">建立伺服器日誌回傳與每日發布排程 / 把課程網站濃縮成初學者筆記 / 發布進度報告並對齊實驗室 repo 慣例 / 把學術閱讀工作流蒸餾成 skill / 盤點實驗室 GitHub 的整體實驗流程 / EC 與 MCMC 入門教學 / Daily server worklog digest / 網站內容初學者筆記 / HTML 預覽 / 網站技能蒸餾為 Skill / 讀取 GitHub 資料 / EC 和 MCMC 初學者教學</td><td class="num">7</td><td class="num">119</td></tr>
-<tr><td class="date"><a href="2026-08-19_2026-08-25/2026-08-19.html">2026-08-19</a></td><td class="titles">建立統一技能架構、進度自動歸檔與委派框架 / 驗證每日進度報告的產出與抽取邊界 / 盤點研究程式碼庫並接上伺服器端資料 / 在伺服器上部署 Claude Code 並複製工作規範 / 確認伺服器端 Claude Code 的登入與啟動方式 / HTML 預覽 / 讀取 GitHub 資料 / 移動 skill 和 clade.md / Server登入與Claude code呼叫</td><td class="num">5</td><td class="num">242</td></tr></tbody>
-</table>
+<div class="list"><a class="entry" href="2026-08-19_2026-08-25/2026-08-25.html"><span class="d">2026-08-25</span><div class="t">執行每日進度報告的產生與發布流程 / 同一時段的第二個報告排程執行 / 每日伺服器工作日誌巡檢，發現日誌與實際活動不同步 / 修好損毀的權限設定並發布前一天的進度報告 / 推進聯合參數估計流程並產出教材風格進度簡報 / 釐清卡住的問題、跑通全流程並修正簡報中的機制誤述 / Daily progress report publish / Daily server worklog digest / Daily progress report publish / 伺服器資料比對方法 / 現在還能做什麼</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-24.html"><span class="d">2026-08-24</span><div class="t">排程自主完成前一日報告的產出與發布 / 伺服器端工作日誌彙整與權限規則整理 / 本日報告排程啟動 / 驗收已發布的進度報告 / 提出新版方法提案並產出教材風格版本 / 提案可行性探查與近七天工作彙整 / 新版提案撰寫（API 過載中斷的前段） / Daily server worklog digest / Daily progress report publish / HTML 預覽 / 伺服器資料比對方法 / 現在還能做什麼 / 伺服器資料比對方法</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-23.html"><span class="d">2026-08-23</span><div class="t">排程首次自主完成前一日報告的產出與發布 / 本日報告排程啟動 / 伺服器日誌彙整：發現判斷準則本身失效 / 確認排程產出的報告並在瀏覽器中驗收 / 讀完全套研究指引後推翻自己的前一輪評估，再用負對照推翻新結論的一半 / Daily progress report publish / Daily server worklog digest / HTML 預覽 / 伺服器資料比對方法</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-22.html"><span class="d">2026-08-22</span><div class="t">每日進度報告排程：修正跨午夜的日期歸屬問題 / 伺服器日誌彙整排程執行 / 伺服器日誌彙整排程執行（第二次） / 修好每日進度報告管線的敘事失效問題 / 驗證聯合估計方法在伺服器資料上的可行性 / 驗證聯合估計方法在伺服器資料上的可行性（前段） / Daily server worklog digest / Daily server worklog digest / HTML 預覽 / 伺服器資料比對方法 / 伺服器資料比對方法</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-21.html"><span class="d">2026-08-21</span><div class="t">伺服器日誌彙整排程執行 / 貝氏推論入門系列：四份互動講義 / 貝葉斯統計入門教學</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-20.html"><span class="d">2026-08-20</span><div class="t">建立伺服器日誌回傳與每日發布排程 / 把課程網站濃縮成初學者筆記 / 發布進度報告並對齊實驗室 repo 慣例 / 把學術閱讀工作流蒸餾成 skill / 盤點實驗室 GitHub 的整體實驗流程 / EC 與 MCMC 入門教學 / EC 與 MCMC 教學的延續討論 / Daily server worklog digest / 網站內容初學者筆記 / HTML 預覽 / 網站技能蒸餾為 Skill / 讀取 GitHub 資料 / EC 和 MCMC 初學者教學</div></a>
+<a class="entry" href="2026-08-19_2026-08-25/2026-08-19.html"><span class="d">2026-08-19</span><div class="t">建立統一技能架構、進度自動歸檔與委派框架 / 驗證每日進度報告的產出與抽取邊界 / 盤點研究程式碼庫並接上伺服器端資料 / 在伺服器上部署 Claude Code 並複製工作規範 / 確認伺服器端 Claude Code 的登入與啟動方式 / HTML 預覽 / 讀取 GitHub 資料 / 移動 skill 和 clade.md / Server登入與Claude code呼叫</div></a></div>
 
 <footer>由 daily-progress-report skill 產生</footer>
 
