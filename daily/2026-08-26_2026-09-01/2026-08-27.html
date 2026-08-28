@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-27</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-27</h1>
+  <p class="sub">星期四 · 產生於 2026-08-28 13:22</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是<strong>把實驗結果收斂成一場開得起來的會</strong>：一整天圍繞實驗室會議簡報的改版與講稿，以及支撐它的實驗重跑。</p>
+<p><strong>簡報從「稽核報告」改回「會議」。</strong> 先用實驗室會議的標準對現有簡報做一次嚴格評閱，核心評語是：證據夠強、邊界也誠實，但整份太像技術稽核報告 —— 資訊密度過高，最重要的結果被埋在倒數第二頁，現場觀眾跟不上。據此重排主線，改成「問題 → 失效機制 → 核心結果 → 決策」，把最關鍵的結果提前；同時把原本一律用同一種綠框呈現的各項修正，拆成<strong>已驗證／合理提案待驗證／修正後仍未解</strong>三種狀態 —— 舊版的視覺會讓人誤以為每一項修正都已經成功。</p>
+<p><strong>視覺與輸出的問題逐一修掉。</strong> 圖表全面改成獨立的 SVG 檔，不再把投影片截圖縮小塞回頁面。過程中處理了兩類問題：一是文字圖層互相重疊，改用把 SVG 載進 DOM、逐一計算每個元素包圍範圍的做法，把偵測到的碰撞組數修到歸零才交付，不靠目視判斷；二是匯出 PNG／PPTX 時圖片整片變黑，診斷出根因是 SVG 本身沒有畫背景，透明像素在轉檔時被合成成黑色 —— 解法是在每張圖最底層補一個白色矩形，只設定 HTML 的背景色無效，因為匯出器是單獨載入 SVG 的。</p>
+<p><strong>術語與講稿。</strong> 逐頁掃出簡報中的英文術語，整理成「翻成中文／首次中英並列／保留原文」三類的對照清單並統一了數個譯名，模型符號、檔案格式與工具名稱維持原文，以保留與程式輸出的可對照性。最後產出一份控制在 30 分鐘內的會議講稿，含逐頁時間提示、預期會被追問的問題與建議回答，以及時間不足時的縮短方案。</p>
+<p><strong>實驗端：先確認料齊，再跑階梯。</strong> 動手前先盤點既有產物，確認先前打算用預設值或猜測填的幾個參數其實都已有實測結果可直接取用，因此不重造。過程中查出並修掉一個變數覆寫的問題：腳本被動態執行時，模組層級的變數會遭到重新指派，導致取到錯誤的來源。煙霧測試通過後啟動歸因階梯 —— <strong>每一步只加入一個變因</strong>，效果才能歸給正確的來源。</p>
+<p><strong>收到新結果後，處理原則是收緊而不是放寬。</strong> 當天陸續收到兩批新的實驗結果，核對流程一致：先確認關鍵數字來自可重現的輸出、而不是摘要沿用舊值，再判斷它對既有結論是支持、修正還是推翻，最後只改真正受影響的頁面。同時把結論的適用範圍逐項寫明 —— 哪些步驟尚未執行、哪些屬於尚未收斂的邊界結果、哪些因為輸入缺件而根本沒有進入分析 —— 避免簡報被讀成比實際更強的宣稱。</p>
+<p><strong>當天的排程全數未執行。</strong> 伺服器日誌彙整與進度報告發布共三次排程觸發，都因為撞到週用量上限而沒有產生任何輸出。這就是 8/27 這份報告延到今天才補上的原因。另外，前一日的進度報告在發布前的自我檢查中攔到一個<strong>真實的洩漏</strong>：渲染出來的「觸及的檔案」清單會把研究檔名整批列出，而檔名本身就是方法細節；秘密掃描只認模式，認不出這種語意層次的洩漏。該區塊已從模板與渲染腳本移除之後才發布。</p>
+<p><strong>待接：</strong> 補上排程撞到用量上限時的處理方式，避免同樣的情況再次造成整天沒有紀錄。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>伺服器日誌彙整排程遭用量上限中斷</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>排程於當晚正常觸發，但立即撞到週用量上限，沒有產生任何輸出 —— 當天的伺服器日誌因此沒有彙整段落，缺口直到隔日稽核才被發現</li></ul>
+</div>
+<div class="card">
+  <h3>進度報告發布排程遭用量上限中斷</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>排程觸發後因週用量上限未能進入流程，當日報告未產生</li></ul>
+</div>
+<div class="card">
+  <h3>發布前一日報告，並攔下一個真實的檔名洩漏</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發布前的自我檢查發現渲染報告底部的「觸及的檔案」清單會整批列出研究檔名，而<strong>檔名本身就是方法細節</strong></li>
+<li>判定秘密掃描只認模式、認不出這種語意層次的洩漏，因此把該區塊從模板與渲染腳本移除後才發布</li>
+<li>執行途中日期跨日，將整輪流程釘回原本那一天，避免報告內容與標示日期不一致</li></ul>
+</div>
+<div class="card">
+  <h3>另一次發布排程同樣被用量上限擋下</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>與同時段的另一次觸發相同，未能執行，無產出</li></ul>
+</div>
+<div class="card">
+  <h3>彙整既有改動成新方法並啟動歸因階梯</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>動手前先盤點既有產物，確認先前打算用預設值或猜測填的幾個參數都已有實測結果可直接取用，因此不重造</li>
+<li>查出並修掉一個變數覆寫問題：腳本被動態執行時模組層級變數遭重新指派，導致取到錯誤的來源</li>
+<li>煙霧測試通過後啟動歸因階梯，<strong>每一步只加入一個變因</strong>，確保效果能歸給正確來源</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
