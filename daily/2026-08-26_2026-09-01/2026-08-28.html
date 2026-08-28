@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-28</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-28</h1>
+  <p class="sub">星期五 · 產生於 2026-08-28 13:19</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是<strong>紀錄與結果的對帳</strong>：確認伺服器端實際跑了什麼卻沒留下紀錄，同時把已經跑完的歸因實驗收斂成可以報告的形式。</p>
+<p><strong>伺服器端工作紀錄稽核。</strong> 比對檔案活動與日誌內容指紋後，確認前一日下午到今日凌晨有一整輪完整流程跑完並成功收尾，過程中還包含一次重跑一致性驗證 —— 但這些完全沒有寫進日誌。日誌主體的內容指紋已經連續數日沒有變動，其中對環境現況的描述也已經過期：主體仍記載「尚無任何實際工作」，實際上該處已累積多個實驗目錄，最早可回溯到數日前；主體登載的磁碟餘量同樣不再成立。此外，前一日缺少彙整段落，而那天正是主要的工作日，判定當天的彙整排程未執行或執行失敗。處理方式是把今日的彙整附加到日誌檔尾，並驗證主體內容未受影響。</p>
+<p><strong>明確標示未驗證的部分。</strong> 這一輪稽核只讀取檔案結構與時間戳，沒有讀取產物內容，因此<strong>數值結果是否正確、重跑是否一致、測試是否全數通過，都尚未確認</strong>。當日結論全部建立在檔案活動的推論上，這一點已寫入報告本身，避免被當成已驗證的事實。</p>
+<p><strong>歸因實驗與簡報。</strong> 四階梯歸因實驗全部跑完，結果乾淨到足以直接下結論，因此當場轉入整理階段，開始撰寫呈現這組結果的新簡報頁並在瀏覽器預覽確認。</p>
+<p><strong>接下來要處理的三件事：</strong> 補寫先前數日缺漏的工作紀錄；修正日誌主體中已經會誤導讀者的環境描述；查清前一日的彙整排程為何沒有產生輸出，以免同樣的缺口再次發生。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>稽核伺服器端工作紀錄，補上當日彙整並標出三處落差</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>比對檔案活動與日誌內容指紋，確認前一日下午到今日凌晨有一整輪流程跑完並成功收尾（含一次重跑一致性驗證），但完全沒有寫進日誌</li>
+<li>指出日誌主體的環境描述已過期：仍記載「尚無任何實際工作」，實際上已累積多個實驗目錄；主體登載的磁碟餘量也不再成立</li>
+<li>發現前一日缺少彙整段落，而那天正是主要工作日，判定當天的彙整排程未執行或失敗，列為待查</li>
+<li>把今日彙整附加到日誌檔尾並驗證主體內容未受影響；同時明確標註<strong>數值正確性與重跑一致性均未經驗證</strong> —— 本輪只讀檔案結構，不讀產物內容</li></ul>
+</div>
+<div class="card">
+  <h3>一次沒有進入流程的排程觸發</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>排程啟動後讀取技能說明即結束，未產生任何報告；當日報告改由另一次執行完成</li></ul>
+</div>
+<div class="card">
+  <h3>產出當日進度報告並送進發布流程</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>執行白名單抽取，取得當日的結構化活動資料</li>
+<li>依兩段式規範用較大的截斷長度重撈逐字稿素材，確認有足夠實質內容可寫，而不是只剩工具統計</li>
+<li>撰寫全日摘要與各階段成果，渲染 HTML 後交付發布前的秘密掃描</li></ul>
+</div>
+<div class="card">
+  <h3>跑完四階梯歸因實驗，轉入簡報整理</h3>
+  <p class="meta"><code>Admin\...\sessions\server 實驗</code> · <code>HEAD</code></p>
+  <ul class="did"><li>四階梯歸因實驗全部跑完，取得足以直接下結論的乾淨結果</li>
+<li>依結果撰寫新的簡報頁面，並在瀏覽器中預覽確認呈現正確</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
