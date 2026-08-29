@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-29</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-29</h1>
+  <p class="sub">星期六 · 產生於 2026-08-29 23:58</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是<strong>把一份方法文件的稽核結果，從「一份問題清單」推進到「一場會議可以直接用的簡報」</strong>，中間換了三次產物形狀，每次換都是因為前一個形狀被證明不對。</p>
+<p><strong>稽核註版本。</strong> 原本要標註的對象弄錯了——手上那份不是先前逐條查過的頁面，而是另一份獨立的報告版，章節結構完全不同。所以沒有把既有的問題清單直接搬過去，而是整份重讀一遍。重讀的結論改變了工作性質：這份文件<strong>已經自己標出了先前發現的其中六條</strong>，於是清單重新分成四類（新發現、仍缺、已自標確認、大幅改善），最後產出一份標註副本——稽核註沿用原檔自己的框線形狀、換一個它調色盤裡沒有的顏色，讓「作者自標」與「稽核標」一眼分得開。出處分三欄標記，因為三種出處的處理方式不同：牴觸文件內部規矩的（作者難以反駁）、同一頁兩段互相打架的（可直接修）、需要對方去查證外部文獻的。</p>
+<p>橫幅上寫了「原文一字未動」，這句必須真的成立，所以做了驗證：把註解框與樣式區塊全部剝掉之後與原檔比對。第一次驗證的正則寫壞了——它切掉框的頭、留下內文，看起來像原文被改過。改用結構深度計數重驗，通過。</p>
+<p><strong>修訂版總結。</strong> 標註副本有個長期問題：讀者要自己分辨哪句是作者說的、哪句是稽核說的。所以再產一份，把稽核結論直接寫進正文，骨架換成原文件的論述順序，兩組發現去重後收斂成 16 處修訂＋8 項未閉合。有一項刻意沒有代寫——那牽涉研究定位，該由作者本人決定。</p>
+<p><strong>簡報。</strong> 先用決策樹把形狀問到定案：與舊版的關係、版型沿用與否、頁數與時間、聽眾的起點、詞彙表放哪。過程中一句「那份到最後沒有報告」直接作廢了一個已經排好的對照頁——原本整份簡報的鋪陳建立在「上次你看過」這個前提上，前提沒了，配比要重排。</p>
+<p>第一版做出來是文字方塊式的，自足單檔、實驗室版型完整內嵌、類別一個沒改。版面沒有靠捲動目測，而是在投影尺寸下逐頁量高度——目測會被「每頁滿版高度」騙過去。</p>
+<p><strong>圖說版。</strong> 改成用圖說故事之後遇到兩個實作問題。其一，那些圖的樣式在外部樣式表、符號在共用 defs，所以必須以內嵌 SVG 進場，用 <code>&lt;img&gt;</code> 會被沙盒隔離、渲染成沒有樣式的線稿。其二，圖的樣式表用 <code>:root</code> 定義色彩變數，和簡報自己的 <code>:root</code> <strong>撞了四個同名變數但值不同</strong>——把 token 的作用域收進圖的容器類別才解決，驗證後簡報底色沒被蓋掉、圖也取到正確的字級與顏色。新畫的五張圖照原規範只寫 class 不寫顏色，並寫了驗證器逐張比對每個 class 在樣式表裡確實有定義，第一輪就抓到兩個缺陷。</p>
+<p><strong>最後一輪是刪。</strong> 「每一頁都塞太多東西」這個回饋是對的，而且根因是我治標：先前用高度上限把圖壓小來消除溢出，內容一個字沒少。量出來每頁 300–500 字，投影片能被一邊聽一邊掃的量大約是 80–150 字。真正的錯誤是<strong>把閱讀文件的圖說長度直接搬上投影片</strong>——那些話該由講者說出口，而講稿已經寫了同一段，等於同一件事寫兩遍、其中一遍還佔著版面。砍成「標題＋圖＋一句話」之後：每頁字數 247–495 降到 80–183，總字數約 5,300 降到 2,182，圖的高度上限反而放大。順手發現原圖每張都自帶標題，搬到投影片上就跟頁面標題講了同一句話，裁掉之後空間還給圖。最後移除每頁左下角的來源列，全部改放講稿附錄——投影片上看不到，但被問到數字出處時手邊有得指。</p>
+<p><strong>卡在哪：</strong> 最後一次刪除沒有刪乾淨，這是明天第一件要接的事。另外有兩處誠實邊界寫進了交付物：一組跨文件的數字差異判斷是推論而非對帳結果，會前值得回原始紀錄確認；版面沒能拿舊版當基準比對，因為預覽環境會把本地檔轉成 data URL，相對路徑的樣式表載不到。</p>
+<p><strong>進度報告管線本身</strong>今天也修掉一個會外洩的缺陷。凌晨那輪發布前檢查時發現索引頁每一天都同時列出「撰寫過的標題」和「原始對話標題」，後者從未經過審查就會上公開頁面。根因是 PowerShell 5.1 把 JSON 陣列當成單一物件送進管線。修正後重新產生十天的索引，確認只剩撰寫過的標題。</p>
+<p><strong>伺服器端</strong>今天的彙整結果是無工作跡象：獨立活動探針與日誌主體雜湊兩項判準一致，過去 24 小時沒有新的檔案變動。既有的四項環境警告（容量、掛載效能、遺留大檔、跨使用者連結失效風險）沒有新增也沒有解除。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>伺服器端日誌彙整：判定無新工作並回寫結論</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>以兩項獨立判準交叉確認過去 24 小時的活動狀態——檔案變動探針與日誌主體雜湊，兩者一致指向<strong>無新工作</strong></li>
+<li>把彙整段落回寫到伺服器端的工作日誌並以 <code>tail</code> 驗證寫入成功，不假設寫入必然成功</li>
+<li>重列四項既有環境警告（容量、掛載效能、遺留大檔、跨使用者連結失效風險），全部標記為既有而非本輪新發現，避免舊風險被誤讀成新事件</li></ul>
+</div>
+<div class="card">
+  <h3>修正索引頁洩漏未審查標題的缺陷並補發前一日報告</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發布前檢查發現索引頁每一天都同時列出撰寫過的標題與<strong>原始對話標題</strong>——後者從未經過審查就會上公開頁面</li>
+<li>定位到根因：PowerShell 5.1 的 <code>ConvertFrom-Json</code> 把 JSON 陣列當成單一物件送進管線，導致標題來源被串接而非取代</li>
+<li>拆成兩個敘述後修好，重新產生十天份的索引並確認只剩撰寫過的標題</li>
+<li>重抽前一日的全日資料並覆蓋發布，涵蓋範圍從當時的部分時段擴到整天</li></ul>
+</div>
+<div class="card">
+  <h3>產生並發布當日進度報告</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>比對近七日的歸檔，確認<strong>無缺口需要回補</strong></li>
+<li>抽取當日活動、撰寫敘事與各階段成果，渲染後逐項自我檢查再發布</li></ul>
+</div>
+<div class="card">
+  <h3>把方法稽核結果推進成可用於會議的圖說式簡報</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發現待標註的對象不是先前查過的頁面而是另一份結構不同的文件，因此<strong>整份重讀而非直接搬運既有清單</strong>——重讀後確認該文件已自行標出其中六條，清單重新分成新發現／仍缺／已自標／大幅改善四類</li>
+<li>產出標註副本：稽核註沿用原檔自己的框線形狀、換一個它調色盤裡沒有的顏色，出處分三欄標記（違反內部規矩／同頁自相矛盾／需查證外部文獻），因為三者的處理方式不同</li>
+<li>驗證橫幅上「原文一字未動」這句真的成立——剝除註解與樣式後與原檔比對；第一版驗證正則切錯邊界，改用結構深度計數重驗通過</li>
+<li>再產一份修訂版總結，把稽核結論寫進正文而非外掛註解，骨架換成原文件的論述順序，兩組發現去重後收斂為 <strong>16 處修訂＋8 項未閉合</strong>；牽涉研究定位的那一項刻意保留不代寫</li>
+<li>以決策樹把簡報形狀問到定案（與舊版關係、版型、頁數、聽眾起點、詞彙表位置）；過程中一項前提被推翻，連帶作廢一頁已排好的內容並重排配比</li>
+<li>第一版簡報為自足單檔，實驗室版型完整內嵌、類別一個沒改；版面在<strong>投影尺寸下逐頁量高度</strong>而非捲動目測，因為每頁滿版高度會讓目測失準</li>
+<li>改成圖說版時解掉兩個實作問題：圖的樣式在外部樣式表、符號在共用 defs，必須以內嵌 <code>&lt;svg&gt;</code> 進場否則被沙盒隔離；圖的 token 用 <code>:root</code> 定義，與簡報自己的 <code>:root</code> <strong>撞了四個同名不同值的變數</strong>，把作用域收進圖的容器類別才解決</li>
+<li>新畫五張圖照原規範只寫 class 不寫顏色，並寫驗證器逐張比對每個 class 在樣式表裡確實有定義——第一輪即抓到兩個缺陷</li>
+<li>接受「每頁塞太多」的回饋並修根因：先前用高度上限壓小圖只是治標，真正的錯誤是把閱讀文件的圖說長度搬上投影片。砍成「標題＋圖＋一句話」後<strong>每頁字數 247–495 降到 80–183、總字數約 5,300 降到 2,182</strong>，圖的高度上限反而放大</li>
+<li>裁掉十一張圖自帶的標題（與頁面標題重複），並移除每頁左下角的來源列改放講稿附錄——投影片乾淨了，但被問到數字出處時仍有得指</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
