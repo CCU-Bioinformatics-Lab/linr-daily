@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-30</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-30</h1>
+  <p class="sub">星期日 · 產生於 2026-08-30 23:53</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是把一份要交給教授的方法稽核簡報，用「教授本人視角」整套審過一遍並當場修掉發現的問題。</p>
+<p>先用 grilling 流程把審視範圍定案：對象是簡報＋講稿（當一個交付物看，不只看投影片本身），模擬視角設為方法的原作者兼四項待裁決事項的決策人，判準分四軸——簡報呈現機制、稽核宣稱是否正確、對抗提問下站不站得住、議程時間夠不夠用。定案後把 16 頁投影片在 1920×1080 下逐頁渲染量測，正文字級中位數只有 17.7px，約是投影常見下限（18pt）的一半，判定為現場投影的實質風險。渲染過程也順帶抓到一個排版 bug：某一頁的圖被一條沒扣掉版面留白的 CSS 高度上限壓到只剩 0.69 倍縮放，改成正確扣除版面留白的計算式後修回約 1.0 倍。</p>
+<p>稽核宣稱正確性這一軸，一則援引外部文獻反駁教授自己方法新穎性的宣稱，逐字核對後確認引用準確；但另一頁用來支撐裁決的數字對帳方向查出來是反的，代表該頁論述需要重寫，不是換個說法就能修。同時依需求把全簡報 18 處底部收尾文字整批刪除，並保留一處容易誤刪、其實不屬於收尾文字的段落。最終產出審視報告與六頁高風險備答卡兩份交付物。</p>
+<p>另一條線是接續先前對教材圖說的清理：上一輪只砍掉頁尾的來源列，這次發現六張教材原圖底部自己還帶著一行收尾敘述沒清掉，逐張指認後砍掉 11 處，圖跟著收緊，16 頁教材現在整份收進一屏內。</p>
+<p>背景維運部分：伺服器端的日誌彙整照常執行，過去 24 小時無新檔案異動，但同時標記出一個異常——彙整結果已經連續六輪一樣，值得後續留意是不是工作路徑對不上監測範圍。每日報告本身也照排程確認過去七天沒有缺口，只需要處理今天。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>每日進度報告排程：確認無缺口並產出當日報告</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>比對過去七天的報告歸檔，確認 08-23～08-29 連續齊備、無需回補</li>
+<li>抽取當日 7 個工作階段的活動素材，產出當日報告</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器端日誌彙整：判定無新工作並標記連續無變動異常</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>獨立活動探針顯示過去 24 小時無檔案異動，日誌本體與前一輪一致</li>
+<li><strong>標記異常</strong>：日誌內容已連續六個彙整週期完全相同，提醒可能是工作路徑落在監測範圍之外或環境存取本身有問題</li>
+<li>補回前一輪遺漏的既有磁碟使用率風險標記</li></ul>
+</div>
+<div class="card">
+  <h3>前一日報告的產出與發布</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>跨過午夜後仍把目標日釘在前一日，避免報告內容錯位</li>
+<li>判定素材含未發表方法細節與可識別資訊，敘事全部收斂到流程層級、不點名任何文件</li>
+<li>發布前逐項自我檢查渲染結果後推送</li></ul>
+</div>
+<div class="card">
+  <h3>以教授視角完整審視方法簡報，並當場修掉三處問題</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>用提問流程把審視範圍定案：簡報＋講稿視為單一交付物，模擬視角設為方法原作者兼裁決者，判準分四軸（呈現機制／宣稱正確性／對抗存活力／議程效率）</li>
+<li>16 頁在 1920×1080 逐頁渲染量測：<strong>無任何一頁溢出</strong>，但正文字級中位數 17.7px，約為投影常見下限的一半——判定為現場投影的實質風險</li>
+<li><strong>查出一處反向的數字對帳</strong>：支撐某項裁決的兩個數字關係與簡報敘述相反，該頁論述需重寫而非換句話說</li>
+<li>外部文獻查證：援引他人研究反駁自身方法新穎性的那項宣稱，逐字核對後<strong>確認引用準確</strong></li>
+<li>依需求刪除全簡報 18 處底部收尾文字，並保留一處位置相似但性質不同的段落待使用者確認</li>
+<li><strong>修掉一個排版根因</strong>：某頁的圖被未扣除版面留白的 CSS 高度上限壓到 0.69 倍縮放，改為正確計算式後回到約 1.0 倍並橫向滿版，兩種視窗高度下驗證 16 頁皆無溢出</li>
+<li>產出逐頁對抗報告與高風險六頁備答卡兩份交付物</li></ul>
+</div>
+<div class="card">
+  <h3>教材圖說清理：補掉上一輪漏掉的圖內收尾敘述</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發現上一輪只清掉頁尾來源列，教材原圖底部自帶的收尾敘述仍在，位置恰好也在左下角</li>
+<li>逐張指認而非按位置一律刪除——新製圖的底部是內容不是敘述，不能一併砍</li>
+<li>共清掉 11 處，圖高跟著收緊，<strong>16 頁全部落在一屏內</strong></li></ul>
+</div>
+<div class="card">
+  <h3>審視工作的起手：確認資料夾內容</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>盤點資料夾，確認簡報有兩個版本、講稿為承重結構</li></ul>
+</div>
+<div class="card">
+  <h3>審視前的範圍界定問答</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>自行查清可查的事實（頁數與圖數不符、版面未宣告固定比例、字級偏小），只把真正需要決策的部分提出來問</li>
+<li>四輪問答收斂出審視對象、模擬視角、四軸優先序與產出形式，並預告工作量與可先砍的項目</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
