@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-08-31</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-08-31</h1>
+  <p class="sub">星期一 · 產生於 2026-08-31 23:57</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是把教授簡報最後幾頁的版面問題收乾淨——同時修正自己在前一輪造成的圖片裁切錯誤，並把頁面上殘留的圖說與警告文字全部清空。</p>
+<p><strong>做成了什麼</strong></p>
+<ul>
+<li>診斷出前一輪用「切線 −10」估圖高，造成第 4、5、2、12、14 頁的圖片下緣被 viewBox 裁掉（最嚴重的第 4 頁裁了 <strong>106 個單位</strong>）。改用瀏覽器 <code>getBBox()</code> 量測每張圖內容的真實邊界重設 viewBox，上下各留 6 單位，16 頁全部貼齊頂端且不再裁切。</li>
+<li>使用者要求撤銷第 3 頁圖片先前放寬的高度上限，照做後確認前面兩項裁切修正沒有被一併撤銷。</li>
+<li>追查「左下角文字又出現」的回報：第一、二輪都只砍到頁尾殘留的一層，第三輪才確認使用者指的其實是圖說（<code>fig-caption</code>）與警告行（<code>warning</code>）兩個獨立元素，全部刪除（<strong>13 條圖說 ＋ 6 條警告行</strong>）。第 13 頁因此少了一格原本寫在圖說裡的正面訊息，補上「查核通過」一格。</li>
+<li>第 3 頁移除了標題列與 eyebrow，只留編號與圖。</li>
+<li>另開一個 session 把第 3 頁的圖從 596×504 放大到 <strong>830×702</strong>（縮放比 +39%），做法是把該頁 SVG 從「寬度撐滿」改成「高度撐滿」（改動限定在 <code>#slide-3</code>，不影響其他頁），列印路徑另外用固定 7.5in 高度。</li>
+</ul>
+<p><strong>遇到的問題</strong></p>
+<p>反覆三輪才把左下角殘留文字清乾淨，因為每輪只砍中一層（先是頁尾 <code>.source-line</code>，再是圖底部最後一行），第三輪才確認是 <code>fig-caption</code> 和 <code>warning</code> 兩層。另一個問題是自己處理第 3 頁位置時用切線估圖高，反而裁掉了另外 5 頁的圖片下緣，屬於這一輪自己造成、自己修回去的錯誤。</p>
+<p><strong>卡在哪、待確認</strong></p>
+<ul>
+<li>第 3 頁列印／匯出 PDF 用的固定 7.5in，沒有實際輸出比對過，只是從頁高扣除 padding 推算。</li>
+<li>放大第 3 頁圖片後，其餘 14 頁沒有逐頁複檢，只確認新規則的選擇器只影響 <code>#slide-3</code>。</li>
+<li>第 14 頁被刪掉的兩句宣稱邊界（結論屬候選、唯一率不得單獨引用）目前只留在講稿裡，投影片本身已無文字提示，會前需要口頭覆蓋。</li>
+<li>使用者問「第三頁一樣」是否指其餘頁面也要照樣刪標題，目前只動了第 3 頁，尚待確認。</li>
+</ul>
+<p>另外兩個排程照常執行：伺服器端每日巡邏本次無新活動（連續第 3 天無檔案異動），每日進度報告產出流程本身也正常跑完。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>執行每日進度報告產出與發布</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>檢查過去 7 天報告皆已存在，確認無缺口需要回補</li>
+<li>為當天重新抽取統計與逐字稿素材，撰寫敘事後渲染並發布</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器每日工作日誌巡邏</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>活動探針顯示過去 24 小時 <code>/bip8_disk/ricky115</code> 下無檔案變動，判定當天無新工作</li>
+<li>比對日誌主體 SHA 確認內容未變（連續第 6 次相同），將彙整段落附加到既有 worklog 檔尾並以 <code>tail</code> 驗證寫入成功</li></ul>
+</div>
+<div class="card">
+  <h3>修正教授簡報版面裁切並清空殘留文字</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>改用瀏覽器量測的內容真實邊界（<code>getBBox</code>）重設 16 頁的 viewBox，修正前一輪把第 4、5、2、12、14 頁圖片下緣裁掉的問題（最嚴重的第 4 頁裁了 106 個單位）</li>
+<li>刪除全部 13 條圖說與 6 條警告行，並把因此少一格的第 13 頁補上「查核通過」正面訊息</li>
+<li>移除第 3 頁的標題列與 eyebrow，只保留編號與圖</li></ul>
+</div>
+<div class="card">
+  <h3>放大教授簡報第3頁圖片</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>把第 3 頁 SVG 從「寬度撐滿」改成「高度撐滿」（scope 限定 <code>#slide-3</code>），圖片實際尺寸從 596×504 放大到 830×702（縮放比 +39%）</li>
+<li>列印路徑另外用固定 7.5in 高度，因 <code>svh</code> 單位在列印情境不可靠</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
