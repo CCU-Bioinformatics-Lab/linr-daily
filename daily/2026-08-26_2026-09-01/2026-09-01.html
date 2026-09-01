@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-09-01</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-09-01</h1>
+  <p class="sub">星期二 · 產生於 2026-09-02 00:25</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心是<strong>教授meeting用的方法簡報</strong>：從版面除錯到內容審視、再到講稿改版，全天多輪並行迭代；晚間兩個排程照常執行。</p>
+<p><strong>簡報結構調整</strong>：把原本獨立成頁的疑點討論，改為緊跟在教材對應章節之後，讓聽眾能對照原書順序追疑點；為此重新編頁，並同步改寫講稿的頁次引用。</p>
+<p><strong>版面逐頁修正</strong>：多輪找出並修好個別頁面的顯示問題——殘留的空白框、放大不足的圖表、公式排版錯位、文字方塊遺漏內容——每次都先用幾何量測比對再動手；在使用者要求下改用實際渲染畫面複查，抓到量測方法本身漏掉的問題（例如框與框互相重疊、新加文字撐破鄰近區塊）。</p>
+<p><strong>內容審視與改版</strong>：對照先前寫好的審視報告，確認多項待修正的問題（含一項方向判斷錯誤、一項對既有文獻立場讓步過度）在前一輪改版中不僅沒修好、還變嚴重。依此產出新一版簡報與審視報告，並在使用者要求下實際跑檔驗證，又抓到程式化檢查遺漏的兩處版面缺陷。</p>
+<p><strong>投影片溢出根因</strong>：追查「某幾頁在特定視窗尺寸下看不到最下面文字」的回報，前三次量測方法都沒抓到問題，第四次才找對量法（頁面本身是否比視窗高，而非文字是否被裁切），一次修正解決四頁加附錄的同類溢出。</p>
+<p><strong>新增內容</strong>：查證教材是否曾說明分支演化的樹狀結構，確認簡報現有圖表都沒有畫過；追查原始資料後發現先前稽核記錄的轉錄有誤，教材本身沒錯。依此新增一頁解剖圖並插入簡報、全份重新編頁，隨後依回饋把新頁資訊量從8個框精簡到3個。</p>
+<p><strong>講稿因應臨場問答</strong>：確認這份簡報只能上一頁／下一頁翻頁、無法跳頁，因此把講稿形式從連續段落改為「先講一句一定要講到的重點，再視情況展開」，並針對高風險頁補上追問卡。</p>
+<p><strong>排程照常</strong>：伺服器端日常巡邏確認過去 24 小時無新活動、狀態與前一日相同，已連續多天無異動；每日進度報告依例產出並發布。</p>
+<p><strong>待決事項</strong>：簡報的待辦清單裡還有幾項低優先度的修正未套用，尚未決定是否要一併處理。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>發布前一日（8/31）進度報告</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>完成 2026-08-31 報告的產出與發布流程，秘密掃描通過後推送</li></ul>
+</div>
+<div class="card">
+  <h3>執行今日（9/1）進度報告排程</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>啟動每日進度報告的抽取、撰寫與發布流程</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器端日常巡邏</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>確認過去 24 小時無新活動，狀態與前一日相同，已連續多天無異動</li>
+<li>撰寫並附加當日彙整記錄</li></ul>
+</div>
+<div class="card">
+  <h3>簡報圖表提問（未展開）</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>提出圖表解讀請求後隨即結束，無實質輸出</li></ul>
+</div>
+<div class="card">
+  <h3>簡報單頁深度解讀、講稿改版與新增內容</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>透過多輪問答確認一張關鍵圖表在整體論述中的定位，並將結果寫入應答參考資料</li>
+<li>因應臨場問答的實際需求，把講稿從連續段落改寫成「先講重點、再視情況展開」的形式</li>
+<li>查證教材是否曾說明分支演化的樹狀結構，確認簡報現有圖表都沒有畫過；追查原始資料後發現先前稽核記錄的轉錄有誤，教材本身沒錯</li>
+<li>新增一頁說明樹狀結構的圖，插入簡報並完成全份重新編頁</li>
+<li>找出多頁在特定視窗尺寸下看不到底部內容的真正成因，一次修正解決同類問題</li>
+<li>依回饋把新頁的資訊量從 8 個框精簡到 3 個，移除與既有附錄重複的內容</li></ul>
+</div>
+<div class="card">
+  <h3>察覺簡報遭外部改版</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發現簡報在未告知下已被重新產生，先前的版面修正遺失，先查證再往下處理</li></ul>
+</div>
+<div class="card">
+  <h3>簡報疑點與教材順序整合重排</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>修掉一頁編輯殘留的空框，逐頁核對圖表確認無溢出、無文字重疊</li>
+<li>把簡報改為疑點緊接教材對應章節之後，重新編頁並同步調整講稿</li></ul>
+</div>
+<div class="card">
+  <h3>簡報圖表分析（並行分支）</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>與另一分支相同起點的問答，止於教材是否畫出樹狀結構的提問，未產出新內容</li></ul>
+</div>
+<div class="card">
+  <h3>確認簡報外部改版範圍</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>比對發現現行檔案是全新一版，此前修正全部消失</li>
+<li>確認是依審視結果重新產生的有意改版而非誤覆蓋，並發現舊的圖片顯示問題隨改版在新內容上重現</li></ul>
+</div>
+<div class="card">
+  <h3>簡報多頁版面與內容修正</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>放大重點圖表版面，修正一處數學公式排版錯位</li>
+<li>把一頁無法解碼的資訊改畫成呼應前頁論述的示意圖</li>
+<li>放大另一頁圖表消除留白，補齊一處文字方塊遺漏的說明內容</li></ul>
+</div>
+<div class="card">
+  <h3>簡報審視 v2：問題修正與實測除錯</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>依審視報告修正多項待辦，其中兩項的嚴重度最高</li>
+<li>要求以實際渲染畫面複查後，抓到程式化檢查遺漏的版面缺陷</li>
+<li>測試不同視窗尺寸時發現自己新增的內容撐破兩頁，加專屬規則修正</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
