@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作進度 · 2026-09-02</title>
+<style>
+/* Editorial Light — 與週報簡報同一套視覺語言。
+   刻意不連 Google Fonts：這份報告的設計前提是零對外請求（公開頁面不該
+   讓瀏覽者被第三方記錄），所以字型只用本機 fallback。
+   「無線條」原則：區塊邊界靠色階與陰影，不靠框線。 */
+:root{
+  --bg:#f9f9ff; --panel:#fff; --panel-2:#f2f3fc; --container:#ecedf6;
+  --ink:#191c22; --muted:#414752; --dim:#747a87;
+  --accent:#0060aa; --accent-soft:#dceaff; --accent-2:#733fc4;
+  --border:rgba(192,199,212,.5); --shadow:rgba(25,28,34,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+    --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+    --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+    --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111318; --panel:#181b21; --panel-2:#1f232b; --container:#22262e;
+  --ink:#e3e2e6; --muted:#c3c6cf; --dim:#8d919b;
+  --accent:#a8c8ff; --accent-soft:#1c3050; --accent-2:#cfbcff;
+  --border:rgba(140,148,163,.28); --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:clamp(2rem,5vw,3.5rem) 1.25rem 5rem;
+  background:var(--bg); color:var(--ink);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto}
+
+/* -- header: type does the work, not a rule line -- */
+header{margin-bottom:2.75rem}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .6rem}
+h1{margin:0;font-size:clamp(2.2rem,6vw,3rem);letter-spacing:-.035em;font-weight:800;line-height:1.1}
+.sub{color:var(--dim);font-size:.82rem;margin-top:.65rem;font-variant-numeric:tabular-nums}
+
+h2{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+   margin:2.75rem 0 1rem;font-weight:600}
+
+/* -- narrative: the centrepiece, given a tonal panel rather than a border -- */
+.narrative{
+  background:var(--panel); border-radius:14px;
+  padding:1.5rem 1.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 12px 32px -18px var(--shadow);
+}
+.narrative p{margin:0 0 1rem} .narrative p:last-child{margin-bottom:0}
+.narrative ul{margin:0 0 1rem;padding-left:1.15rem} .narrative li{margin:.4rem 0}
+.narrative strong{font-weight:680;color:var(--ink)}
+.narrative code{background:var(--accent-soft);color:var(--accent);
+  padding:.12em .4em;border-radius:5px;font-size:.87em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+/* -- session cards -- */
+.card{
+  background:var(--panel); border-radius:12px;
+  padding:1.15rem 1.35rem; margin-bottom:.7rem;
+  box-shadow:0 1px 2px var(--shadow), 0 10px 26px -20px var(--shadow);
+}
+.card h3{margin:0;font-size:1.02rem;font-weight:680;letter-spacing:-.01em;line-height:1.45}
+.meta{font-size:.75rem;color:var(--dim);margin:.35rem 0 0}
+.meta code{background:var(--container);color:var(--muted);
+  padding:.12em .45em;border-radius:5px;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+.did{margin:.9rem 0 0;padding:.85rem 0 0 1.1rem;border-top:1px solid var(--border);font-size:.9rem}
+.did li{margin:.4rem 0;color:var(--muted)}
+.did li::marker{color:var(--accent)}
+.did strong{color:var(--ink);font-weight:650}
+.did code{background:var(--accent-soft);color:var(--accent);
+  padding:.1em .35em;border-radius:4px;font-size:.88em;
+  font-family:"Space Grotesk",ui-monospace,"SFMono-Regular",Consolas,monospace}
+
+
+.warn{background:var(--accent-soft);border-radius:10px;
+  padding:.85rem 1.1rem;font-size:.82rem;color:var(--muted);margin-bottom:1.75rem}
+.warn strong{color:var(--ink)}
+
+footer{margin-top:3.5rem;padding-top:1.15rem;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+a{color:var(--accent)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">CCU Bioinformatics Lab · 每日進度</p>
+  <h1>2026-09-02</h1>
+  <p class="sub">星期三 · 產生於 2026-09-02 23:52</p>
+</header>
+
+
+
+<h2>摘要</h2>
+<div class="narrative"><p>今天的重心仍是<strong>教授 meeting 用的方法簡報</strong>：從凌晨的檔案復原與版面救火，到白天一整輪「流暢度檢查」帶出的結構重排、文字預算、新增與刪頁，再到深夜針對目標函數的追問；另外產出一版濃縮十頁簡報與一份 30 分鐘講稿。兩個排程照常。</p>
+<p><strong>檔案復原</strong>：凌晨發現簡報被換成一個比前一晚更舊的版本——先前修好的逐頁樣式、圖的縮放、新插的頁都不見了。比對多個備份確認差異方向是「往回」，從最完整的備份起步、單頁換回使用者指定時間點的圖，其餘十六項改動逐字重做，每一步都帶斷言、找不到或找到多處就中止；復原後以「應該有／應該沒有」清單逐條驗收。另有一頁被回報「消失」，查明是重排時搬了位置且標題被一起拿掉，並非遺失。</p>
+<p><strong>流暢度檢查與結構重排</strong>：實際在瀏覽器裡跑過整份簡報並逐頁對講稿，找出四處斷點，其中兩處是幕上與口說不一致。教材 PDF 有 44 頁但沒有文字層，此前所有文字搜尋在結構上都看不到它；於是逐頁渲染掃出標題做對照表，確認簡報開頭三頁與教材順序相反。把總覽頁提前之後，方法主軸與教材頁序嚴格遞增，首頁「依教材順序走」那句才成立。補讀先前沒看過的 26 頁後，找到兩處會改變簡報講法的地方（一項比例的方向解讀可能相反；一組數字不一致是作者自己標註的，不是稽核發現），上台前必須先定調。</p>
+<p><strong>文字預算規則</strong>：使用者定下「每頁版面文字不超過 100 字、或不超過畫面 30%」。第一次量測只數葉節點、漏掉巢狀文字，重量後三頁超標（232、148、183 字），逐頁砍到 100 以內，被砍的內容都先確認講稿裡已承載；使用者要求還原其中一頁的數字表後，接受該頁 126 字超標——那頁的證據本身就是一張表。</p>
+<p><strong>內容增刪</strong>：新增一頁講教材後半的評分機制（原本簡報一句都沒有），之後依回饋從一步擴成三段機制鏈；刪掉論證最弱的一頁、把它唯一承重的一條併進鄰頁；把「查核通過」與「教材自列未閉合」分成兩組並用顏色區隔（原本五格全是紅框，通過那格長得跟未閉合一樣）。三張圖重畫：把一頁「紅線斷了」的論證真的畫出紅線與斷口；一頁三層迴圈圖的文字從 305 字砍到 102；一頁「三種零」的圖從 407 字砍到 245，並移除一行本來就錯的數字。</p>
+<p><strong>目標函數那頁的裁決</strong>：追問「資料實況」那組數字從哪來，發現這台機器上只能確認簡報與講稿彼此一致、無法對回原始查詢，依使用者要求把自己跑出來的數字從圖上拿掉。接著以 grill 方式走完 19 題，把該頁立場從「保留近似、寫清楚偏誤方向」改成三選一的裁決，每條路都標明要放棄哪一批既有宣稱，並把後果連到宣稱邊界頁與收尾頁。實作時應使用者要求不跑檔、只用靜態解析驗證；稍後實測發現靜態估算低估字寬 36%，一處框差 5px 就爆掉、一處標題壓到內文，修好後用真實字寬掃全份 15 張圖：越界 0、撐破方框 0。</p>
+<p><strong>交付物</strong>：講稿 v04（12,446 字，發言 25:40 加緩衝 4:20），逐頁與現行幕面對過；濃縮十頁版簡報，重用原版樣式與七張承重圖；另有一版 16 頁精簡草案——原訂三組合併，第三組量出內容 1054px 而筆電可用僅 678px，不可行。簡報也加上頁碼跳頁與全螢幕（含進出時重新對齊捲動位置），都在瀏覽器實測。</p>
+<p><strong>排程照常</strong>：伺服器端日常巡邏確認連續第 5 天無新活動；每日進度報告依例產出並發布前一日。</p>
+<p><strong>待決事項</strong>：深夜針對目標函數組成的追問尚未走完——已定調三項良構性問題要納入、排序方式、以及寫進收尾頁當第五題但不上台講；教材裡的條件句尚未查證。濃縮十頁版缺少評分機制那頁，要不要補待決。附錄詞彙表仍超過文字預算，等使用者決定豁免或拆頁。</p></div>
+
+<h2>工作階段</h2>
+<div class="card">
+  <h3>執行今日（9/2）進度報告排程</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>確認過去 7 天報告無缺口，啟動每日進度報告的抽取、撰寫與發布流程</li></ul>
+</div>
+<div class="card">
+  <h3>伺服器端日常巡邏</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>確認過去 24 小時無新活動，連續第 5 天無異動；日誌主體與前一輪相同</li>
+<li>撰寫並附加當日彙整記錄</li></ul>
+</div>
+<div class="card">
+  <h3>發布前一日（9/1）進度報告</h3>
+  <p class="meta"><code>.claude\sessions</code> · <code>HEAD</code></p>
+  <ul class="did"><li>完成 2026-09-01 報告的產出與發布流程，回補檢查無缺口，秘密掃描通過後推送</li></ul>
+</div>
+<div class="card">
+  <h3>簡報檔案復原、單頁重構與精簡草案</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>發現簡報被換成比前一晚更舊的版本，比對備份確認差異方向後，從最完整備份起步逐項重做十六項改動，每步帶斷言並以清單驗收</li>
+<li>把一頁論點不在圖上的疑點頁改成四列表格，方框從 11 個降到 2 個</li>
+<li>找出標題被壓到圖片大小的成因是自己加的媒體查詢：只限高不限寬讓 14 張圖有 13 張變形留白，改成兩級限高後歸零</li>
+<li>逐頁對照講稿與簡報，修正五處不一致</li>
+<li>補讀教材 PDF 其餘 26 頁（無文字層，先前文字搜尋看不到），找到兩處會改變簡報講法的地方</li>
+<li>產出 16 頁精簡草案：原訂三組合併，第三組量出內容高度超過筆電可用空間而作罷；把教材自己的實測數據重畫成兩張圖補進草案</li></ul>
+</div>
+<div class="card">
+  <h3>簡報流暢度檢查與導覽功能</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>實際在瀏覽器跑過整份簡報並逐頁對講稿，找出四處斷點，其中兩處是幕上與口說不一致</li>
+<li>修正一頁幕上數字與教材表頭不一致；加上頁碼跳頁與全螢幕功能，含進出全螢幕時重新對齊捲動位置，皆實測</li>
+<li>發現自己為頁面編號寫的理由在檔案裡找不到支撐，依使用者說明改正</li></ul>
+</div>
+<div class="card">
+  <h3>疑點頁圖內文字精簡</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>把一頁圖內文字從 25 行壓到 17 行，框跟著縮，整張圖高度 486 → 348</li>
+<li>使用者回報仍有溢出，發現先前只量整張圖外框、量不到字撐破自己的方塊，改為逐字對所屬框做碰撞檢測</li></ul>
+</div>
+<div class="card">
+  <h3>簡報依教材順序重排、文字預算與內容增刪</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>教材 PDF 無文字層，逐頁渲染掃出標題做對照表，確認開頭三頁與教材順序相反；把總覽頁提前後方法主軸嚴格遞增</li>
+<li>依「每頁不超過 100 字或畫面 30%」量測全份，發現第一次算法只數葉節點而低估，重量後三頁超標，逐頁砍到 100 以內；還原一頁的數字表後接受該頁超標</li>
+<li>重畫三層迴圈圖，文字 305 → 102 字；新增一頁教材後半的評分機制，再依回饋擴成三段機制鏈</li>
+<li>刪掉論證最弱的一頁並把承重內容併進鄰頁；把「通過」與「未閉合」分成兩組並以顏色區隔</li>
+<li>重畫一頁讓「紅線斷口」真的看得見；另一頁圖內文字 407 → 245 字並移除一行本來就錯的數字</li></ul>
+</div>
+<div class="card">
+  <h3>目標函數組成的追問（進行中）</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>拆解簡報上目標函數的組成，找出三項不在現有四個裁決題裡的良構性問題</li>
+<li>使用者定調：三項納入並排序，寫進收尾頁當第五題但不上台講；確認濃縮十頁版缺少評分機制那頁</li>
+<li>教材裡的條件句尚未查證（PDF 無文字層），標明為未驗證，追問尚未走完</li></ul>
+</div>
+<div class="card">
+  <h3>目標函數頁裁決重寫、講稿 v04 與實測修正</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>追問一頁「資料實況」數字的出處，確認這台機器上只能證明簡報與講稿彼此一致、無法對回原始查詢；依使用者要求把自己跑出來的數字從圖上拿掉</li>
+<li>以 19 題走完該頁的立場：從「保留近似、寫清楚偏誤方向」改成三選一裁決，每條路標明要放棄哪批既有宣稱，並把後果連到宣稱邊界頁與收尾頁</li>
+<li>依要求不跑檔、只用靜態解析實作；該頁上段改畫成圖、放大、壓縮決定區塊，筆電尺寸下圖寬 707 → 869</li>
+<li>寫出講稿 v04（12,446 字，發言 25:40 加緩衝 4:20），逐頁與現行幕面對過；一頁改成「一個觀測扇出到兩組輸入」的畫法</li>
+<li>使用者回報跑檔後實測：靜態估算低估字寬 36%，一處框差 5px、一處標題壓到內文，修好後用真實字寬掃全份 15 張圖，越界與撐破方框皆為 0</li></ul>
+</div>
+<div class="card">
+  <h3>簡報流暢度檢查（並行分支）</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>與另一分支相同起點，止於追問一頁數字的出處：確認簡報與講稿彼此一致，但無法在這台機器上對回原始資料</li></ul>
+</div>
+<div class="card">
+  <h3>產出濃縮十頁版簡報</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>重用原版樣式、共用圖形定義與七張承重圖，把 18 頁壓成 10 頁加附錄；四個裁決題各佔一頁，其餘查核併成一頁</li></ul>
+</div>
+<div class="card">
+  <h3>疑點頁圖內文字精簡（並行分支）</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>同一起點的分支；使用者回報頁面消失，查明檔案本身沒問題、是講稿內容跑掉</li></ul>
+</div>
+<div class="card">
+  <h3>找回「消失」的一頁</h3>
+  <p class="meta"><code>Admin\...\sessions\教材test</code> · <code>HEAD</code></p>
+  <ul class="did"><li>查出該頁沒有消失，是重排時搬到下一頁且標題被一起拿掉；把標題裝回並同步講稿</li>
+<li>確認使用者說的樹狀圖從未進過簡報，唯一畫出樹的那張圖不在任何版本裡</li></ul>
+</div>
+
+
+<footer>
+  <span>由 daily-progress-report skill 產生</span>
+  <span><a href="../index.html">← 全部報告</a></span>
+</footer>
+
+</div>
+</body>
+</html>
