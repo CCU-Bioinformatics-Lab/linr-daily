@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- daily-log:generated — 這個檔由 render.py 產生，手改會被覆蓋 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-09-05 工作日誌</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="page"><h1 class="date">2026-09-05</h1>
+<div class="meta">方法文獻查證與實驗室盤點　·　涵蓋 09-04 12:43 ~ 09-05 00:22</div>
+<div class="headline">引用之前先複驗：PyClone 的數字全對得上，LICHeE 的原始碼有兩處對不上論文、還有三個論文沒提的行為；實驗室 16 個 repo 也讀成一份可查的地圖，其中一個專案跟我的題目落在同一個問題域</div>
+</header>
+
+<nav class="outline"><h2 class="section">今日概覽</h2><ol><li><a href="#item-1">六個 subagent 分頭精讀實驗室 GitHub org 的 16 個 repo，回傳 4,236 行底稿，整合成一份可導航的 HTML 與一份可 grep 的 Markdown；其中一個專案跟我正在讀的 PyClone／LICHeE 落在同一個問題域</a></li><li><a href="#item-2">PyClone 正文全文重讀後既有筆記無一處要更正，另補三處 Online Methods 漏記；LICHeE 原始碼分版對照後，找到兩處論文說法與實作不符、三個論文完全沒提的行為</a></li></ol></nav>
+
+<section class="item" id="item-1">
+<h3><span class="num">01</span>把實驗室 GitHub 的 16 個 repo 讀成一份可導航的全景地圖<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>我的題目（腫瘤克隆演化樹推論）在實驗室裡不是孤立的，但相關的程式、資料與判斷散在十幾個 repo 與各自的文件裡。一個一個讀完要好幾天，而在那之前我沒辦法回答「這件事實驗室做過沒有」。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>把 org 依主題切成六塊，各派一個 subagent 去讀：定相工具的兩個分支、給 agent 讀的知識庫、官網與教材、批改與日誌那條工具鏈、各人的工作流、以及那個腫瘤演化樹專案。要求每個技術宣稱都附檔名與行號；讀不到的（要編譯的東西、存取不到的磁碟）一律標成「文件自述、未驗證」。六份底稿回來之後再整合成一份可導航的 HTML 與一份同內容、可 grep 的 Markdown。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>產出在 <code>論文/實驗室全景地圖/</code>：<code>ccu-lab-map.html</code>（9 節、左側目錄、repo 總表可依類別篩選）、<code>ccu-lab-map.md</code>（同內容）、<code>briefs/</code> 六份底稿共 <strong>4,236 行</strong>。</p>
+<p>最有用的一件事：org 裡有一個名字看起來像日誌的 repo，實際是一個完整的腫瘤克隆演化樹推論專案 —— 它的文獻座標系（PhyClone、PyClone-VI、PhyloWGS）跟我這兩天在讀的 PyClone 與 LICHeE 是同一個問題域，而跟實驗室其他工具幾乎不重疊，只在 BAM 那一層相接。</p>
+<p>其餘發現分三類：文件與程式碼不同步的數處、對外發布版本與開發分支之間的落差、兩支工具的開發分支正在做同一件事。<strong>這幾類的具體內容沒有寫進這份公開日誌</strong> —— 地圖裡含私有 repo、伺服器路徑與未發表研究，六個 agent 全程只寫本機檔案、沒有對外發布，這裡也照同一條線處理。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>以後問「實驗室有沒有做過 X」不必再重掃一次 org，先讀這份地圖。對我自己的題目最直接的影響是那個同問題域的專案：它已經把 PyClone 式的 emission 模型實作過一輪，我從論文讀到的東西可以拿去跟一份實作對照，而不是從零開始推。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>幾乎沒有程式被實際編譯或執行 —— 只有三處例外跑過該 repo 自己的檢查腳本，其餘全是讀碼推論。伺服器路徑、資料量、benchmark 數字都只能確認「文件如此記載」，沒有辦法存取實際磁碟去核。地圖第 8 節把每一項未確認的都列出來了，包含其中一條「某人手上有另一人卡住那題的解」的推論本身。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>論文/實驗室全景地圖/ccu-lab-map.html</code></li><li><code>論文/實驗室全景地圖/ccu-lab-map.md</code></li><li><code>論文/實驗室全景地圖/briefs/（六份底稿，未公開）</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>gh repo list CCU-Bioinformatics-Lab（含 archived）</code></li><li><code>六個 subagent 分頭精讀後回傳底稿，主線再整合</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-2">
+<h3><span class="num">02</span>PyClone 的數字複驗全對得上，LICHeE 的原始碼卻對不上論文兩處<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>筆記已經寫到第四版，但裡面的數字與方法敘述都還沒有被獨立核過一次。要拿它去撐自己的論述之前，得先知道哪幾句站得住、哪幾句照抄會出事。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>PyClone 那邊：把 PDF 全文重讀一遍，逐項對回筆記，對得上就不動，對不上或筆記沒記的就回原文定位、逐字抄下來。</p>
+<p>LICHeE 那邊：把原始碼（MIT，5,041 行 Java）抓下來，分兩個版本讀 —— 最接近論文的那次 commit（2015-02-25）與現在的 HEAD（2017-10-19），兩者 <code>src/</code> 差 1,728 增 / 1,164 刪，所以凡有行為差異都分版標註。整份是靜態閱讀，沒有編譯也沒有執行。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p><strong>PyClone 複驗：沒有一處需要更正。</strong> coverage、混合比例、驗證過的突變數、分群數對照、MCMC 迭代設定、V-measure 的版本，逐字元對過。</p>
+<p>另讀出三處先前漏記的方法細節，都在 Online Methods，都是「作者做了但沒放進正文敘事」的類型：Fig. 1 的真值資料集有人工剔除離群位點、判準是目視偏離期望值、沒報告剔除幾個；那組臨床樣本的分析輸入不只公開講的那批已驗證突變；收斂診斷只做了臨床樣本那一組，模擬與混合實驗因為跑太多次而沒做。</p>
+<p><strong>LICHeE：兩處論文說法與實作對不上。</strong> 一是「約束網路內含所有合法樹」在預設模式下不成立 —— 建網路時只在某一層與下一個非空層之間試連邊，跨層的合法祖裔關係預設不進候選，要加旗標才會補；二是介於「有」與「沒有」之間的那批突變（greyzone）在預設參數下恆為空，因為兩個門檻預設同值，判定條件永遠為假。</p>
+<p><strong>三個論文完全沒提的行為。</strong> 無解時會自動刪掉一個最小的不穩定群集重搜，迴圈到有解為止（現行版本還會再自動放寬一次建邊規則）；所以回報「找到 N 棵有效樹」時，N &gt; 0 不保證是在原始輸入與原始約束下得到的。一致性檢查在現行版本兩層都失效（參數為 0、移除邏輯被註解掉）。每位病人的參數是手調的，軟體說明檔逐案列出，論文正文沒有對應敘述。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>兩篇的引用強度要分開處理。PyClone 的數字可以直接引；LICHeE 的方法敘述照論文寫會與實際跑出來的行為對不上，尤其是「窮舉所有合法樹」與「中間地帶的突變依拓撲指派」這兩句 —— 要引就得標版本，並說明是論文敘述還是實作行為。這也影響之後真的要拿它跑資料時怎麼設參數：預設值不是作者自己用的值。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>沒有編譯也沒有執行過 LICHeE，所以「預設建網路排除掉多少合法拓撲」無法量化，那要實際跑才知道。LICHeE 的三份附加檔案（含與另一套方法的比較）仍未取得。PyClone 手上是作者手稿版，最終出版版的正文沒有可比對的版本，摘要已知有措辭差異。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>論文/PyClone_LICHeE_文獻筆記_2026-09-03.md</code></li><li><code>論文/pyclone.pdf</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>pdftotext -layout pyclone.pdf（5,289 字，有文字層）</code></li><li><code>git clone --depth 1 https://github.com/viq854/lichee.git，再 fetch --unshallow 取完整歷史</code></li><li><code>以論文期 commit 與 HEAD 兩版分別 grep 關鍵參數與呼叫端</code></li></ul></div></div></details>
+</section>
+
+<section class="block"><details class="record"><summary>本日其他 2 項（完整紀錄）</summary><div class="inner"><div class="rec"><div class="t">排程去遠端 server 彙整工作日誌，連續第 7 輪沒有活動跡象<span class="badge done">完成</span></div><p>每晚的排程去 bip8 server 蒐當天的工作證據，再把摘要附回遠端的工作日誌檔尾。這一輪照設計先跑獨立活動探針（找 24 小時內變動過的檔案，排除版控與快取目錄），結果是 0 個檔案；輔助檢查列出工作目錄樹，最新的修改時間停在 8/28 凌晨，與 24 小時的窗口不重疊，佐證探針的結果。日誌主體的雜湊值是 08448ec0b81b，與上一輪記錄的值完全相同，代表使用者確實沒有手動更新過主體。三項證據一致，因此判定為「無工作跡象」，而不是「有工作但沒寫進日誌」——這個區分是這個排程存在的理由，因為歷史上有過工作最密集卻連續三天回報「無新內容」的情形。摘要已附回遠端日誌檔尾並以 tail 驗證寫入成功。值得記一筆的是：這已經是連續第 7 輪主體無變化，遠端的工作停滯也接近一週。</p><div class="why">未進主要工作項：分數 2 分（環境類扣分、使用者只有排程觸發、沒有檔案落地），本來就屬於記錄層；排程自己的執行紀錄依規則最多進記錄層。</div><div class="art"><div class="t">跑過的指令</div><ul><li><code>find -newermt &quot;24 hours ago&quot;（活動探針，0 檔）</code></li><li><code>剝掉彙整段落後對日誌主體算 SHA，與上一輪比對</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>遠端家目錄的 worklog Markdown 檔尾新增一段每日彙整</code></li></ul></div></div><div class="rec"><div class="t">用 daily-log 產生並發布這一份日誌<span class="badge done">完成</span></div><p>每晚的排程用實驗室共用的 daily-log skill 產生當天的工作日誌，通過秘密掃描後推到公開的 linr-daily。這一輪從全域游標（09-04 12:43）掃到 09-05 00:22，涵蓋 6 個 session、418 段對話；因為已經跨過午夜，日期標籤依 daily-log 的設計落在 09-05，實際涵蓋區間寫在頁面上的 covers 欄。候選階段列了 4 項，分層後 2 項進呈現層、2 項進記錄層。與工作無關的 session 依規則排除：一個在 Codex 裡問「開 subagent 去讀整個 org 會耗多少 token」的估算查詢沒有留下專案內的產出，不列為候選。這一輪也照公開發布的分寸把全景地圖那一項的細節收掉，只寫發現的類別、不寫具體內容。</p><div class="why">未進主要工作項：分數 -1 分（環境類扣分）；排程自己的執行紀錄依規則最多進記錄層。</div><div class="art"><div class="t">跑過的指令</div><ul><li><code>collect_day.sh（無參數，從全域游標掃到現在）</code></li><li><code>signals.py / candidates.py / validate_log.py / verify_evidence.py / render.py</code></li><li><code>發布前用公開規則集做秘密掃描</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>日誌 repo 的 .data/2026-09-05.json 與 daily/2026-09-05.html</code></li></ul></div></div></div></details></section>
+
+<footer class="page"><a href="2026-09-04.html">← 2026-09-04</a><a href="../index.html">所有日誌</a><span></span></footer>
+</div>
+</body>
+</html>
