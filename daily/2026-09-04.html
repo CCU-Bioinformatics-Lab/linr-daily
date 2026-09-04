@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- daily-log:generated — 這個檔由 render.py 產生，手改會被覆蓋 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-09-04 工作日誌</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="page"><h1 class="date">2026-09-04</h1>
+<div class="meta">教授會議簡報定稿期　·　涵蓋 09-03 15:39 ~ 09-04 12:43</div>
+<div class="headline">PyClone 從正文讀到附錄：先前三條說法撤回，論文六項數值宣稱有兩項用原始資料重現不出來；日誌與週報也接成每週三晚上自動產出的管線</div>
+</header>
+
+<nav class="outline"><h2 class="section">今日概覽</h2><ol><li><a href="#item-1">weekly-progress-deck 的聚合腳本改讀日誌 repo 的 .data/&lt;date&gt;.json（09-03 之前退回舊資料），新增每週三 22:30 的排程；一週的界線同時改成週五到隔週週四，15 份舊報告依新界線重新歸檔並推送</a></li><li><a href="#item-2">先前只讀得到補充材料而寫下的三條判斷全部不成立：PyClone 有 perfect／persistent phylogeny 假設、有物理混合 DNA 的濕實驗真值、主分析是 case 2 不是 case 1</a></li><li><a href="#item-3">四份補充 PDF 沒有新內容、且缺了正文兩次指向的限制那一節；附錄的逐突變表逐列重算後，六項數值宣稱五項相符，「28 of 31 diploid heterozygous」任何判準都給不出 28</a></li></ol></nav>
+
+<section class="item" id="item-1">
+<h3><span class="num">01</span>週報改成每週三晚上從 daily-log 的日誌 JSON 聚合<span class="badge kind">工具</span><span class="badge ongoing">進行中</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>使用者指出重點是「每週三晚上把日誌整合成週報」。當天下午日誌來源剛換成 daily-log，而週報的聚合腳本仍讀舊管線抽出來的資料，等於週三晚上會拿到一份跟日誌對不起來的週報。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>先把「一週從哪天算起」這個唯一定義點（WorkWeek.ps1）改成週五起算，兩個 skill 的說明與註解同步，再把既有報告依新界線搬進三個週資料夾、重建索引。接著改寫 Build-WeekRollup.ps1，以日誌 repo 的 .data/&lt;date&gt;.json 為主來源，找不到的日子退回舊管線資料，讓跨越切換日的這一週仍聚得完整。最後建立每週三 22:30 的排程，並把 Publish-Deck.ps1 的內嵌秘密規則換成共用的 Redaction.ps1。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>本週（08-28 ~ 09-03）實測聚得完整：六天走舊資料、一天走 daily-log，七天都有內容，沒有空日。</p>
+<p>舊報告 15 份全部重新歸檔進三個週資料夾，索引重建後 15 條連結與檔案逐一對得上，已推送（commit 04b314b）。搬過位置，舊網址失效。</p>
+<p>rollup 只帶 headline、items（含結果／解讀／還缺）、record、issues；檔名、引文定位與工作時長刻意不帶，所以週報不會印出研究檔名。</p>
+<p>Publish-Deck.ps1 改載共用規則後 dry-run 通過，秘密掃描回報 clean。</p><figure><div class="scroll-x"><table><thead><tr><th>日期</th><th>星期</th><th>來源</th><th class="num">呈現項數</th></tr></thead><tbody><tr><td>08-28</td><td>五</td><td>舊管線</td><td class="num">10</td></tr><tr><td>08-29</td><td>六</td><td>舊管線</td><td class="num">4</td></tr><tr><td>08-30</td><td>日</td><td>舊管線</td><td class="num">7</td></tr><tr><td>08-31</td><td>一</td><td>舊管線</td><td class="num">4</td></tr><tr><td>09-01</td><td>二</td><td>舊管線</td><td class="num">11</td></tr><tr><td>09-02</td><td>三</td><td>舊管線</td><td class="num">13</td></tr><tr><td>09-03</td><td>四</td><td>daily-log</td><td class="num">5</td></tr></tbody></table></div><figcaption>本週聚合實測（08-28 ~ 09-03，週五起算）</figcaption></figure></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>兩個排程各管一段、不搶同一批檔案：週三 22:30 先補當天日誌再產週報，每日 23:50 才把日誌推上去。週報的資料來源從此只有一個（日誌 JSON），舊管線只剩「09-03 以前的歷史資料」這一個用途，可以在下週之後整批退場。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>用新的聚合結果實際生成一份簡報這一步還沒跑過，首次會在 09-09 的排程上執行；週界定成週五到隔週週四是照「lab meeting 在週四」推的，若週報其實要涵蓋到週三為止，資料夾要再搬一次；兩個排程的新流程都還沒無人值守跑過完整一輪。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>unified-skills/skills/productivity/daily-progress-report/scripts/lib/WorkWeek.ps1</code></li><li><code>unified-skills/skills/productivity/daily-progress-report/scripts/Render-Report.ps1</code></li><li><code>unified-skills/skills/productivity/daily-progress-report/SKILL.md</code></li><li><code>unified-skills/skills/productivity/weekly-progress-deck/scripts/Build-WeekRollup.ps1</code></li><li><code>unified-skills/skills/productivity/weekly-progress-deck/scripts/Publish-Deck.ps1</code></li><li><code>unified-skills/skills/productivity/weekly-progress-deck/SKILL.md</code></li><li><code>unified-skills/skills/productivity/weekly-progress-deck/out/data/week-2026-08-28_2026-09-03.json</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>Build-WeekRollup.ps1 -InWeek 2026-09-03</code></li><li><code>Publish-Deck.ps1（dry-run，確認共用秘密規則載得進來）</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>linr-daily: daily/2026-08-14_2026-08-20、daily/2026-08-21_2026-08-27、daily/2026-08-28_2026-09-03（commit 04b314b）</code></li><li><code>排程 weekly-progress-deck-publish（每週三 22:30）</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-2">
+<h3><span class="num">02</span>讀到 PyClone 正文後撤回自己先前的三條說法<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>前一輪寫文獻筆記時只拿得到補充材料，據此寫下三條判斷：PyClone 沒有演化約束、兩篇除單細胞外都缺獨立 ground truth、HGSOC 的主分析是 case 1。使用者把正文 PDF 放進論文資料夾之後，這三條可以逐字核對。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>用 pdftotext 轉出正文全文（5,289 字，有文字層、不是掃描版），逐節對照筆記裡那三條推測，對不上的直接改寫並在筆記末端留修訂紀錄。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>三條全部推翻：</p>
+<p><strong>一、演化約束在，只是不編進推論。</strong> 正文第 2 頁明確假設 clonal population 遵循 perfect（同位點不重複突變）與 persistent（突變不消失、不回復）的 phylogeny，「同一群就有同一個 cellular prevalence」正是從這個假設推出來的；模型只是不強制排序或加總約束。</p>
+<p><strong>二、獨立真值存在。</strong> 正文 Fig. 1 用 1000 Genomes 四個檢體的 DNA <strong>物理混合</strong>（比例約 0.01／0.05／0.20／0.74，不是電腦模擬）構成一棵七節點的樹當真值：對照方法給出 12 群、把真值群裡的兩種基因型拆開，PyClone 給出正確的 7 群。</p>
+<p><strong>三、主次案例寫反了。</strong> 主分析是四個空間分離樣本、約 5000 倍深度、49 個經驗證的突變（對照方法 9 群 vs PyClone 6 群）；先前寫的那組（n=44）出自補充材料，是次要案例。</p>
+<p>另外查到版本差異：使用者給的是 PMC 釋出的 author manuscript 版，摘要措辭與最終出版版就不一樣。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>「兩篇互補而非競爭」這個定位還成立，但依據要換掉：不是「PyClone 不管樹」，而是「它有樹的假設卻刻意不編進推論，把建樹留給下游」——這正好解釋了為什麼 LICHeE 接得上去。要談 PyClone 的驗證強度時可以直接引那組濕實驗，先前寫的「缺獨立 ground truth」不能再用。逐字引用時得標明是 author manuscript 版還是最終出版版。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>最終出版版只比對了摘要，正文其他段落無從比；LICHeE 的三份附加檔（含它與 PhyloSub 的實際比較）沒下載；兩份筆記的第 5 欄「與我研究的關聯」仍是空的，要使用者給一句研究問題才填得了。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>論文/PyClone_LICHeE_文獻筆記_2026-09-03.md</code></li><li><code>論文/pyclone.pdf</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>pdftotext -layout pyclone.pdf（5,289 字，有文字層）</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-3">
+<h3><span class="num">03</span>用 PyClone 附錄的逐突變表反查它的六項數值宣稱<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>使用者補齊了期刊資料庫上的五個附件（四份 PDF 加一份逐突變的試算表）。要確認的是：這些附件有沒有帶來先前拿不到的內容，以及論文的數值宣稱能不能用原始資料重現。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>四份 PDF 與先前用的合一版逐字比對，並全文搜尋「限制」那一節的標題；試算表兩個工作表逐列重算群的組成與拷貝數判準，把每一項宣稱各自重跑一次。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p><strong>四份 PDF 沒有新內容</strong>，但比對出一件事：四份合計 6,238 字，合一版 7,408 字，差的約 1,200 字正是 Supplementary Discussion。全文搜尋 <code>Supplementary Discussion</code> 與 <code>Limitations</code> <strong>零命中</strong>——正文兩次把讀者指向的限制那一節，不在這個資料庫的附件清單裡。</p>
+<p><strong>試算表才是新東西</strong>，而且兩個工作表的編號是反的：S1 是 case 2（49 個突變）、S2 是 case 1（72 個突變），各 47 欄。逐列重算後六項宣稱五項相符，一項重現不出來；另有一處組成敘述不完整：論文說某一群由對照方法的第 4、5 群合併而成（9 + 31 = 40），但原始資料顯示它還吸收了第 6 群的 3 個與第 8 群的 1 個，總數 44 是對的，敘述漏了來源。</p><figure><div class="scroll-x"><table><thead><tr><th>論文宣稱</th><th>重算結果</th><th>判定</th></tr></thead><tbody><tr><td>PyClone 第 1 群 = 對照方法 1 群 4 個 + 2 群 20 個 + 6 群 1 個</td><td>25</td><td>相符</td></tr><tr><td>對照方法第 1 群有 3/4 落在單套失去異質性的區域</td><td>3/4</td><td>相符</td></tr><tr><td>對照方法第 2 群有 18/20 為二倍體異型合子</td><td>18/20</td><td>相符</td></tr><tr><td>對照方法第 6 群那個單一突變四樣本皆 (3,1)</td><td>(3,1)</td><td>相符</td></tr><tr><td>case 1 對照方法第 4 群有 8/9 為異型合子缺失</td><td>8/9</td><td>相符</td></tr><tr><td>31 個裡有 28 個是二倍體異型合子</td><td>嚴格判準 27／放寬成四樣本皆 minor≥1 為 31／total≤2 且 minor≥1 仍為 27</td><td>重現不出來</td></tr></tbody></table></div><figcaption>六項數值宣稱的逐列重算結果（來源：附錄的逐突變表）</figcaption></figure></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>兩處都不改變論文的論證方向（27 或 28 都支持「絕大多數是二倍體異型合子」），但要在自己的稿子裡引這些數字就得標明出處與版本——尤其那個 28：四個例外全是在某些樣本呈拷貝增益、不是失去異質性，猜測那段取自另一個拷貝數判定工具的輸出，但驗不了。限制那一節只存在於期刊官方版，引用限制時不能指向資料庫的附件。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>「28 來自另一個拷貝數判定工具」只是假設，另外兩個工具的逐突變拷貝數沒隨附，驗不了；LICHeE 的三份附加檔沒下載；筆記第 5 欄「與我研究的關聯」仍空著。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>論文/PyClone_LICHeE_文獻筆記_2026-09-03.md</code></li><li><code>論文/NIHMS5568-supplement-Supplemental_Figures.pdf</code></li><li><code>論文/NIHMS5568-supplement-Supplemental_Note.pdf</code></li><li><code>論文/NIHMS5568-supplement-Supplemental_Results.pdf</code></li><li><code>論文/NIHMS5568-supplement-Supplemental_Tables.pdf</code></li><li><code>論文/NIHMS5568-supplement-Table_S1-2.xls</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>pdftotext 四份 supplement 後與合一版逐字比對</code></li><li><code>全文 grep Supplementary Discussion、Limitations（零命中）</code></li><li><code>python 讀 Table_S1-2.xls 兩個工作表，逐列重算群組成與拷貝數判準</code></li></ul></div></div></details>
+</section>
+
+<section class="block"><h2 class="section">遇到的問題與處理</h2><div class="issue"><div class="t">週報發布腳本的秘密規則比日報少一套</div><p>Publish-Deck.ps1 原本用自己內嵌的一份規則，缺了公開 repo 專用的研究資料那一套，等於週報走的閘門比日報鬆</p><div class="r">→ 改成載入與日報共用的 Redaction.ps1，dry-run 確認掃描 clean</div></div></section>
+
+<section class="block"><details class="record"><summary>本日其他 1 項（完整紀錄）</summary><div class="inner"><div class="rec"><div class="t">排程去遠端 server 彙整工作日誌，連續第 6 天沒有活動跡象<span class="badge done">完成</span></div><p>每晚 23:00 的排程去 bip8 server 蒐當天的工作證據並把摘要附回工作日誌。這一輪先跑獨立活動探針（找 24 小時內變動的檔案，排除版控與快取），結果是 0 個檔案變動；最新的工作目錄修改時間停在 8/28 凌晨，距今超過一週。日誌主體的 SHA 也連續第 6 天維持不變，代表使用者確實沒有手動更新過。因此判定為「無工作跡象」，而不是「有工作但沒寫進日誌」。順帶用 df 查了磁碟：資料碟 13T 用掉 11T（84%，剩 2.0T）；根目錄 1.1T 用掉 927G（89%，剩 116G），偏高但未到緊急。摘要已附加到日誌檔尾，既有內容未動。既有未結事項四條（另一顆碟只剩 2%、一個 48GB 的疑似遺留檔、六個指向他人家目錄的連結有失效風險、兩個裝完的壓縮檔可清理）沿用主體記載，本輪沒有新增。</p><div class="why">未進主要工作項：agent 自己跑的例行排程，使用者參與度 0，且屬環境維運類，−1 分進記錄層。</div><div class="art"><div class="t">跑過的指令</div><ul><li><code>find -newermt 24 hours ago（活動探針，0 檔）</code></li><li><code>剝掉彙整段落後對日誌主體算 SHA 比對前一輪</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>遠端家目錄的 worklog Markdown 檔尾新增一段每日彙整</code></li></ul></div></div></div></details></section>
+
+<footer class="page"><a href="2026-09-03.html">← 2026-09-03</a><a href="../index.html">所有日誌</a><span></span></footer>
+</div>
+</body>
+</html>

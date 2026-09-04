@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- daily-log:generated — 這個檔由 render.py 產生，手改會被覆蓋 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-09-03 工作日誌</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="page"><h1 class="date">2026-09-03</h1>
+<div class="meta">教授會議簡報定稿期　·　涵蓋 09-03 00:00 ~ 09-03 15:39</div>
+<div class="headline">簡報進入定稿期：目標函數的質疑獨立成 P0.5 專頁、全份改成 15 頁圖說版；先前兩條結論一條撤下、一條下修</div>
+</header>
+
+<nav class="outline"><h2 class="section">今日概覽</h2><ol><li><a href="#item-1">目標函數的質疑獨立成 P0.5 專頁並三次改版；查證後確認教材沒有為 Score 引任何文獻，而 Drton &amp; Plummer 原文與講稿每一條都對得上</a></li><li><a href="#item-2">簡報從 17 頁重排成 15 頁並改成圖說版：容器 1180 → 1500px、最小字級 18px、六頁採用新圖、P0.4 專頁刪除但裁決留著改口頭</a></li><li><a href="#item-3">P0.5 頁的第二個疑點（教材 p7 說 u 是一條家族、p17 分母卻算兩份拷貝）整塊從幕上撤下，判定頁從四把尺變三把尺；決策框只剩罰項一題</a></li><li><a href="#item-4">方向匯總從「三條壓低、一條推高、三比一淨向下」下修為「兩條明確向下、一條方向未定 → 偏下，但大小未量測」；群數下界從量測結果改口為主張</a></li><li><a href="#item-5">PyClone 解量測（把 VAF 校正成 cellular prevalence，不建樹）、LICHeE 解拓撲（perfect phylogeny 約束把樹壓成 DAG）；LICHeE 原文把 PyClone 列為可接的上游</a></li></ol></nav>
+
+<section class="item" id="item-1">
+<h3><span class="num">01</span>把目標函數的質疑做成 P0.5 專頁，並改到第三版<span class="badge ongoing">進行中</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>前一晚追問目標函數組成時，冒出三項不在四個 P0 裡的良構性問題。使用者判斷「目標函數有問題值得多一頁講」，並決定把它升成第五件裁決（P0.5），專門探討 Score 的合理性與正確性。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>先做文獻查證（BIC 在奇異模型上該扣多少、mixture 群數選擇的一致性結果、PairClone 怎麼定群數），再刪第 9、14 頁、新增 P0.5 頁（17 頁、五個 P0），第 15 頁改建成正確性判定頁（四把尺）。早上另開兩版預覽（版面骨架改法、圖說版），用 PyMuPDF 逐頁渲染教材找 Score 的文獻來源，抓 Drton &amp; Plummer 全文逐字比對講稿。下午刪掉示意用的橢圓、寫一份 2:30 的講解稿。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>教材對 Score 的文獻來源：<strong>沒有</strong>。全篇唯一的出處清單在 p41，八組出處沒有一條是模型選擇。</p>
+<p>Drton &amp; Plummer 2017 全文（39 頁）逐字核對：漸近式確實出自 Watanabe 2009 Thm 6.7，λ ＝ d/2 需要 Fisher information 各點可逆——講稿裡的每一條都對得上。</p>
+<p>幕上字數三次來回：<strong>426 → 156 → 331</strong>。第二版砍掉的是論證本身（條件／原文／所以呢），第三版放回，只留兩件口述。</p>
+<p>第 14／15 頁重新分工：14 ＝ 傷口與推導（補上「跨 K 比較每比一次就製造一次奇異點」這一步），15 ＝ 四把尺與後果（文字方塊 6 → 3）。字級層級改成疑點結論最大、公式其次、決定框最小。</p>
+<p>兩張示意圖沒有出處：Score 對 K 曲線的縱座標是手挑的，幕上標了「示意圖，非模擬結果」；橢圓後來整個刪掉，奇異軌跡的論證改由並排白框的文字承載。</p><figure><div class="scroll-x"><table><thead><tr><th>版本</th><th class="num">字數</th><th>留下／拿掉的</th></tr></thead><tbody><tr><td>第一版</td><td class="num">426</td><td>兩個式子並排＋完整推導＋方向匯總</td></tr><tr><td>第二版</td><td class="num">156</td><td>砍到只剩式子並排；論證三步（條件／原文／所以呢）被砍掉</td></tr><tr><td>第三版</td><td class="num">331</td><td>論證三步放回，口述只留漸近式其餘項與「λ 到底多少」</td></tr></tbody></table></div><figcaption>P0.5 頁幕上字數的三次來回（版面文字，不含圖內標籤）</figcaption></figure></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>這頁的爭點從「稽核的判斷對不對」變成「λ 等於多少」：教材 p9 的罰項假設 λ ＝ d/2，而跨 K 比較時真值落在奇異軌跡上、λ 嚴格小於 d/2，BIC 仍代 d/2 就罰得過重、K̂ 系統性偏低。教授追問「那 λ 到底多少」時要誠實答不知道——learning coefficient 要逐模型族計算，mixture 的已知結果不涵蓋這裡。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>教材 §9–§12 沒逐頁看，若後段對誤差地板有補充會改變判定；Watanabe 原書沒讀過，是經 Drton &amp; Plummer 轉引；附錄 A 的逐頁出處表仍用 16 頁時期的舊頁碼，從第 10 列起全部差一位，還沒修；第 12 頁（三把尺）改版後只用 DOM 幾何驗證，沒看過渲染畫面。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>教材test/20260829_主題一下篇_方法v2_圖說版_教授簡報_01.html</code></li><li><code>教材test/20260902_主題一下篇_方法v2_圖說版_講稿_04.md</code></li><li><code>教材test/20260903_主題一下篇_方法v2_目標函數_修訂清單_01.md</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_講稿_05.md</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>pymupdf 逐頁把教材 PDF 轉圖（無文字層），全解析度讀 p7、9、10、17、33、38、41–44</code></li><li><code>WebFetch arXiv:1309.0911（Drton &amp; Plummer 2017）全文，逐條比對講稿</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02_slide12改版預覽.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02_目標函數兩頁改版預覽.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02_這個分數_圖說版預覽.html</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-2">
+<h3><span class="num">02</span>教授簡報改成圖說版，從 17 頁重排成 15 頁<span class="badge ongoing">進行中</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>教授三秒內要抓到一頁的主張。使用者先要求評判各疑點的重要程度與「如果是你會刪哪一頁」，再要求站在教授的角度看每一頁圖的清晰程度，然後把推薦做成「盡量用圖說故事而非文字方塊」的版本。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>先排序：指出五個 P0 的「嚴重度」其實混了三把不同的尺；建議刪第 13 頁（唯一跟五件裁決無關的一頁）、把舊 10、11 頁合併；背景改成只編碼「這頁是不是疑點」。再量版面：容器鎖在 1180px、第 2 頁 28 條字小於 16px；做出誠意版 _02（全部 1.5×、13 張 SVG）。使用者只採用 4-5-6-7-8-14 六頁新圖、其餘退回原樣；之後逐項調：短視窗下把 max-height 從寫死的 44vh 改成 calc(100svh − 292px)、第 12 頁函數併進標題並①②並排、第 13 頁改兩欄、第 7 頁出口改成真正的分支、叉號改深墨色、新增第 11 頁 Score 組成頁後又刪掉 P0.4 專頁（裁決留著，改成口頭必達）、第 6 頁 purity／ρ 那句拆成三行。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>第 8 頁被質疑「沒有家族二怎麼會有家族誤標」：質疑不成立（誤標講的是 read 的真實來源，不是產出裡有幾張表），但幕面確實在誘導誤讀——標籤從「不在產出裡」改成「read 在，狀態表不在」，講稿加 Q8-5 並標為這頁最可能被問的一題。</p>
+<p>第 12 頁圖的出處分三層講清楚：兩個罰項是引的（教材 p9、Watanabe 經 Drton &amp; Plummer 轉引），p7／p17 是教材原文，橢圓與 Score 曲線是手畫的示意圖，幕上已標。</p>
+<p>三處用語改成台灣寫法（歸一化、灌水、對應），其餘掃過本來就對。</p><figure><div class="scroll-x"><table><thead><tr><th>項目</th><th>改前</th><th>改後</th></tr></thead><tbody><tr><td>圖的縮放</td><td>1.18×（第 2 頁 1.043×）</td><td>全部 1.5×（第 2 頁不變）</td></tr><tr><td>小於 16px 的字</td><td>第 2 頁 28 條、第 6 頁 3 條、第 12 頁 2 條</td><td>0 條，最小 18px</td></tr><tr><td>短視窗墨水寬（第 5／6／9／10／12 頁）</td><td>759–1012px</td><td>1064–1418px（+40%）</td></tr><tr><td>頁數</td><td>17</td><td>15 ＋ 附錄</td></tr><tr><td>發言時間</td><td>26:00</td><td>23:30，五個 P0 全部上桌在 17:50</td></tr></tbody></table></div><figcaption>圖說版改前／改後（1920×1080；短視窗指 1800×760）</figcaption></figure></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>背景現在只回答一個問題：這頁是不是疑點。第 2 頁是唯一沒受惠的一頁（直式圖受限於高度，仍 1.043×），要變大只能改橫式。還有一處不一致等決定：同樣是非 P0 的疑點，第 9 頁紅底、第 13 頁一般底，而第 13 頁那條（排序分數偏向串接）更重。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>第 4 頁的 w／c 數字原本就對不起來（節點權重加正常細胞總和 1.40），要對教材第六節定案；四種投影尺寸的量測沒對新第 10 頁重跑，只量了 1440×900；列印輸出沒測；預覽窗格中途只回空白快照，第 6、12 頁的改動是量出來的不是看出來的。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>教材test/20260829_主題一下篇_方法v2_圖說版_教授簡報_01.html</code></li><li><code>教材test/20260902_主題一下篇_方法v2_圖說版_講稿_04.md</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02x_另四頁提案.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_講稿_05.md</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>瀏覽器內 getBBox()／getComputedStyle 逐頁量圖尺寸、字級、溢出（1920×1080 與 1800×760）</code></li><li><code>python 腳本對 _02.html 做逐頁替換、重排 id／data-index／CSS 選擇器</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-3">
+<h3><span class="num">03</span>P0.5 頁的 η 歸一疑點整塊撤下，四把尺變三把尺<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>原本的結論：p7 與 p17 對 u 的定義不能同時成立，所以「L_data 不是 likelihood」——早上查證時判為「活下來且加強」並升進 P0.5。中午評第 12 頁時指出這格斷言超出自己的立場：幕上寫成無條件的「不是 likelihood」，實際是兩條互斥分支（p17 對 → 分母是二倍體全量 → 不歸一；p7 對 → 要改的是 p17 的分母），對齊之前沒有定論。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>使用者決定把第二個疑點刪掉。第 11 頁 ② 整塊刪除（視窗方塊、兩條家族長條、綠紅括號、p7／p17 兩行、紅框），① 攤到全頁寬：左半推導、右半後果；第 12 頁「四把尺」→「三把尺」，刪掉良構性那列、其餘三列重新編號；講稿 Q11-1 整張刪除，必達稿與接縫講法同步。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>現在的結論：P0.5 只剩一個疑點（罰項用維度、不是 learning coefficient），決策框改成一題——罰項是接受 K̂ 系統性偏低，還是改用 λ 驅動的準則。強度從「兩處疑點」下修為「一處」；η 那條不再出現在幕上，講稿的 Q 卡也沒有它。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>會議上不講 η。p7 與 p17 的矛盾仍留在修訂清單裡，性質是「規格漏寫請補」而不是要教授二選一的裁決題。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>第 12 頁改版後沒看過渲染畫面（預覽窗格只回空白快照），版面是用 DOM 幾何驗證的；附錄的逐頁出處表沒跟著改。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_教授簡報_02.html</code></li><li><code>教材test/20260903_主題一下篇_方法v2_圖說版_講稿_05.md</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-4">
+<h3><span class="num">04</span>簡報第 14 頁的 K̂ 方向匯總從「三比一淨向下」下修成「偏下」<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>原本第 14 頁的方向匯總寫「三比一淨向下 → 群數下界仍成立」，直接餵給第 16 頁唯一存活的宣稱。使用者要求把方向匯總那兩處一起修掉。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>逐條重數：composite 近似原本被拆成「M_eff 灌大」（壓低）與「高估 fit」（推高）兩條，實際是同一個機制的兩端、互抵、方向未定，不計入；η 未閉合不是有方向的偏誤，也不計入。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>明確壓低 K̂ 的只剩兩條：維度罰項、排序偏誤。第 13 頁與第 14 頁改成同一組帳，結論改為「偏下，但大小沒有量測」。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>「群數下界仍成立」現在是主張不是量測結果，第 16 頁引用它時要用這個口徑。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>偏多少沒有量測；要知道大小得在凍結產出上跑模擬，還沒做。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>教材test/20260829_主題一下篇_方法v2_圖說版_教授簡報_01.html</code></li><li><code>教材test/20260902_主題一下篇_方法v2_圖說版_講稿_04.md</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-5">
+<h3><span class="num">05</span>讀 PyClone 與 LICHeE 兩篇並寫成文獻筆記：一個解量測、一個解拓撲<span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>兩篇常被並列成「subclonal reconstruction 的兩個方法」，要弄清楚它們解的是不是同一層的問題。</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>走 literature-reading 工作流：抓 Nature Methods 與 Genome Biology 原文結構，逐節摘要，寫成七欄筆記並存進論文資料夾。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>PyClone：把每個突變拆成 normal／reference／variant 三亞群，genotype 當成有先驗的隨機變數放進 likelihood，推出不受純度影響的 cellular prevalence，再用 Dirichlet Process 讓突變共享 prevalence 而分群。<strong>它不建樹。</strong></p>
+<p>LICHeE：假設分群已可用，用三條約束（樣本集包含關係、VAF 不得超過前代、姊妹分支 VAF 加總不得超過共同前代）把可能的樹壓成一個 DAG，再枚舉它的 spanning tree。</p>
+<p>串接關係有原文：LICHeE 也接受由 PyClone、ABSOLUTE、ASCAT 算出的 CP 值取代 VAF。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>對這份簡報的意義：教材 p41 把 PyClone 列在「單變異連鎖視窗那條路線的代表實作」，它其實是純度校正層而不是建樹層；引用時不要把兩篇當成同一層的比較對象。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>筆記提到兩篇之間有一個方法論張力，細節只在筆記裡、本日誌未逐一核對；綜整反方那一步沒做。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>論文/PyClone_LICHeE_文獻筆記_2026-09-03.md</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>WebFetch 兩篇原文（Roth 2014 Nat Methods、Popic 2015 Genome Biology）逐節摘要</code></li></ul></div></div></details>
+</section>
+
+<section class="block"><h2 class="section">遇到的問題與處理</h2><div class="issue"><div class="t">預覽窗格對簡報檔只回空白快照</div><p>中午起瀏覽器預覽對這份 deck 只回傳空白圖，第 6、11、12 頁的改動沒辦法目視確認</p><div class="r">→ 改用 DOM 幾何（getBBox、getComputedTextLength）量溢出與餘裕，並在講稿標明哪些是量出來的、沒看過畫面</div></div><div class="issue"><div class="t">python3 在這台機器是 Microsoft Store 空殼</div><p>daily-log 的 bash 腳本全用 python3 呼叫，空殼 exit 49 且無輸出，會讓整條管線靜默死掉；腳本開檔又沒指定編碼，Windows 預設 cp950 會讀壞中文</p><div class="r">→ 加 ~/bin/python3 轉接到真正的直譯器並設 PYTHONUTF8=1；~/bin 本來就在 Git Bash 的 PATH 最前面</div></div></section>
+
+<section class="block"><details class="record"><summary>本日其他 3 項（完整紀錄）</summary><div class="inner"><div class="rec"><div class="t">每日日誌改用 daily-log 產生，接上既有的 linr-daily repo<span class="badge ongoing">進行中</span></div><p>使用者指定改用實驗室共用的 daily-log skill 產生日誌。clone 到 ~/.claude/skills；這台機器的 python3 是 Microsoft Store 空殼（exit 49、無輸出），而 skill 的腳本全用 python3 呼叫、開檔又沒指定編碼，所以加了 ~/bin/python3 轉接到真正的直譯器並強制 UTF-8 模式。寫了 ~/.config/daily-log 五個設定：repo 指向既有的 linr-daily 本機 clone、project 指向所有工作目錄的上一層、audience 教授、source-dirs 列出實際目錄名、watch-paths 留空（專案根不是 git repo）；日誌 repo 補上 .gitignore 擋 .data/_private。健檢六個值全對後首次掃描：13 個 session、去重 841 則 resume 複本。本篇就是它的第一份產出。狀態：舊排程（23:50 用舊管線發布）尚未改接；linr-daily 是公開 repo 而這個 skill 設計給私有 repo（artifacts 會列出檔名與指令），所以沒有推送，等使用者決定。</p><div class="why">未進主要工作項：落在邊界（7 分，環境設定類），一律進記錄層。</div><div class="art"><div class="t">碰過的檔案</div><ul><li><code>~/bin/python3</code></li><li><code>~/.config/daily-log/repo</code></li><li><code>~/.config/daily-log/project</code></li><li><code>~/.config/daily-log/audience</code></li><li><code>~/.config/daily-log/source-dirs</code></li><li><code>~/.config/daily-log/watch-paths</code></li><li><code>unified-skills/skills/productivity/daily-progress-report/out/repo/.gitignore</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>git clone https://github.com/CCU-Bioinformatics-Lab/daily-log.git ~/.claude/skills/daily-log</code></li><li><code>bash ~/.claude/skills/daily-log/scripts/collect_day.sh</code></li><li><code>python3 ~/.claude/skills/daily-log/scripts/signals.py 2026-09-03</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>.worklog_scan/2026-09-03/</code></li></ul></div></div><div class="rec"><div class="t">撤回「罰項形式沒寫」與「BIC 無保證」兩條稽核主張<span class="badge done">完成</span></div><p>前一晚追問目標函數時，我提出「罰項的形式教材都沒寫」，並建議在 Slide 16 放「singular model 無 BIC 保證」。今天凌晨回頭查：教材 p9 明確寫了 Score(K,Θ_K) = L_data − ½·p_K·log M_eff + log p(K)，第一條是我說錯，撤回。第二條查文獻：Keribin 2000 證明 BIC 在 mixture order selection 上一致，Drton &amp; Plummer 2017 也稱 BIC 對 mixture 是 state-of-the-art，「無保證」站不住；改成只講方向——用維度做懲罰會對「包含真分布但不極小」的模型過度懲罰，K̂ 系統性偏低。兩條都寫進修訂清單，簡報上不再出現「無保證」。</p><div class="why">未進主要工作項：4 分，沒改獨立的檔（改動已算在 P0.5 那一項）；翻案項最低進記錄層。</div><div class="art"><div class="t">碰過的檔案</div><ul><li><code>教材test/20260903_主題一下篇_方法v2_目標函數_修訂清單_01.md</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>WebSearch／WebFetch：Keribin 2000、Drton &amp; Plummer 2017（arXiv:1309.0911）、PairClone（arXiv:1702.07465）</code></li></ul></div></div><div class="rec"><div class="t">用 daily-progress-report 舊管線把 09-02 進度報告發布到 linr-daily<span class="badge done">完成</span></div><p>排程於 00:00 用舊的 daily-progress-report 管線產出並發布 09-02 的進度報告：13 個工作階段，commit 291a798，歸入新的一週資料夾 2026-09-02_2026-09-08。回補檢查無缺口（08-26 至 09-01 都已存在），秘密掃描乾淨（PUBLIC ruleset）。這是舊管線最後一次無人值守發布——下午起改用 daily-log 產生日誌，舊排程要不要停由使用者決定。</p><div class="why">未進主要工作項：agent 自己跑的例行工作，參與度 0；有 commit 保底到邊界，進記錄層。</div><div class="art"><div class="t">碰過的檔案</div><ul><li><code>unified-skills/skills/productivity/daily-progress-report/out/narrative/2026-09-02.md</code></li><li><code>unified-skills/skills/productivity/daily-progress-report/out/sessions/2026-09-02.json</code></li></ul></div><div class="art"><div class="t">跑過的指令</div><ul><li><code>Publish-Report.ps1 -Date 2026-09-02 -Push</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>linr-daily: daily/2026-09-02_2026-09-08/2026-09-02.html</code></li></ul></div></div></div></details></section>
+
+<footer class="page"><span></span><a href="../index.html">所有日誌</a><span></span></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* 工作日誌共用樣式 — 簡潔、單一主色、以閱讀為優先 */
+
+:root {
+  --ink:        #1f2328;   /* 主要文字 */
+  --ink-soft:   #57606a;   /* 次要文字 */
+  --ink-faint:  #8c959f;   /* 標籤、註腳 */
+  --line:       #d8dee4;   /* 分隔線 */
+  --line-soft:  #eaeef2;
+  --bg:         #ffffff;
+  --bg-soft:    #f6f8fa;   /* 卡片、表頭底色 */
+  --accent:     #1f6feb;   /* 唯一主色：連結、強調 */
+  --accent-bg:  #ddf4ff;
+  --warn-bg:    #fff8c5;   /* 問題與待確認 */
+  --warn-line:  #d4a72c;
+  --maxw:       860px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 20px 80px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+               "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+/* ---------- 頁首 ---------- */
+header.page {
+  padding: 40px 0 20px;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 32px;
+}
+header.page .date {
+  font-size: 28px; font-weight: 600; letter-spacing: .5px; margin: 0;
+}
+header.page .meta {
+  color: var(--ink-faint); font-size: 14px; margin-top: 4px;
+}
+header.page .headline {
+  margin-top: 18px; padding: 14px 16px;
+  background: var(--accent-bg); border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0; font-size: 17px;
+}
+
+/* ---------- 今日概覽 ---------- */
+.outline { margin-bottom: 44px; }
+.outline h2 { font-size: 15px; }
+.outline ol { margin: 0; padding-left: 22px; }
+.outline li { margin: 8px 0; }
+.outline a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.outline a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- 區塊標題 ---------- */
+h2.section {
+  font-size: 15px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.2px; color: var(--ink-faint);
+  margin: 0 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--line-soft);
+}
+
+/* ---------- 工作項 ---------- */
+.item { margin: 0 0 44px; scroll-margin-top: 20px; }
+.item h3 {
+  font-size: 20px; font-weight: 600; margin: 0 0 4px;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.item h3 .num { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+.badge {
+  font-size: 12px; font-weight: 500; letter-spacing: .5px;
+  padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--ink-soft); background: var(--bg-soft); white-space: nowrap;
+}
+.badge.done    { border-color: #4a9; color: #1a7f5a; background: #e6f6ee; }
+.badge.ongoing { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.badge.dropped { border-color: var(--line); color: var(--ink-faint); background: var(--bg-soft); }
+.badge.failed  { border-color: var(--warn-line); color: #8a6100; background: var(--warn-bg); }
+/* 類別標籤：工具／流程類的工作項，與研究項區分 */
+.badge.kind    { border-style: dashed; color: var(--ink-faint); background: transparent; }
+
+/* 問題／做法／結果／解讀 四段 */
+.field { margin: 14px 0; display: grid; grid-template-columns: 68px 1fr; gap: 14px; }
+.field > .label {
+  font-size: 13px; color: var(--ink-faint); padding-top: 4px;
+  border-right: 1px solid var(--line-soft); text-align: right; padding-right: 12px;
+}
+.field > .body > :first-child { margin-top: 0; }
+.field > .body > :last-child  { margin-bottom: 0; }
+.field.interpretation > .body { font-weight: 500; }
+
+/* ---------- 表格 ---------- */
+figure { margin: 18px 0; }
+figcaption { font-size: 13px; color: var(--ink-faint); margin-top: 8px; }
+table {
+  border-collapse: collapse; width: 100%; font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+th, td { padding: 7px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; }
+th { background: var(--bg-soft); font-weight: 600; border-bottom: 1px solid var(--line); }
+td.num, th.num { text-align: right; }
+.scroll-x { overflow-x: auto; }
+
+/* ---------- 圖 ---------- */
+figure img, figure svg { max-width: 100%; height: auto; display: block; }
+
+/* ---------- 折疊的技術細節 ---------- */
+details.detail {
+  margin: 16px 0 0; border: 1px solid var(--line-soft);
+  border-radius: 4px; background: var(--bg-soft);
+}
+details.detail > summary {
+  cursor: pointer; padding: 8px 14px; font-size: 13px; color: var(--ink-soft);
+  list-style: none;
+}
+details.detail > summary::before { content: "▸ "; color: var(--ink-faint); }
+details.detail[open] > summary::before { content: "▾ "; }
+details.detail > summary::-webkit-details-marker { display: none; }
+details.detail .inner { padding: 0 14px 12px; }
+details.detail pre {
+  margin: 0; padding: 10px 12px; background: var(--bg); border: 1px solid var(--line-soft);
+  border-radius: 3px; overflow-x: auto; font-size: 13px; line-height: 1.6;
+}
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+code { font-size: 90%; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; }
+
+/* ---------- 問題與處理 / 待請教 ---------- */
+.block { margin-bottom: 44px; }
+.issue { margin-bottom: 18px; }
+.issue .t { font-weight: 600; }
+.issue .r { color: var(--ink-soft); }
+
+.ask { background: var(--warn-bg); border-left: 3px solid var(--warn-line);
+       border-radius: 0 4px 4px 0; padding: 14px 18px; }
+.ask ol, .ask ul { margin: 0; padding-left: 20px; }
+.ask li { margin: 6px 0; }
+
+.next ul { margin: 0; padding-left: 20px; }
+.next li { margin: 6px 0; }
+
+/* ---------- 頁尾與導覽 ---------- */
+footer.page {
+  margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-faint);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+a { color: var(--accent); }
+footer.page a { text-decoration: none; }
+footer.page a:hover { text-decoration: underline; }
+
+/* ---------- 首頁 ---------- */
+.month { margin-bottom: 36px; }
+.month h2 { font-size: 15px; color: var(--ink-faint); letter-spacing: 1px;
+            border-bottom: 1px solid var(--line-soft); padding-bottom: 6px; }
+.entry { display: grid; grid-template-columns: 108px 1fr; gap: 16px;
+         padding: 10px 0; border-bottom: 1px solid var(--line-soft); align-items: baseline; }
+.entry .d { color: var(--ink-faint); font-size: 14px; font-variant-numeric: tabular-nums; }
+.entry .h { }
+.entry .h a { color: var(--ink); text-decoration: none; font-weight: 500; }
+.entry .h a:hover { color: var(--accent); }
+.entry .tags { font-size: 13px; color: var(--ink-faint); margin-top: 2px; }
+
+/* ---------- 列印 ---------- */
+@media print {
+  body { padding: 0; font-size: 12pt; }
+  details.detail { display: none; }
+  .item { break-inside: avoid; }
+  footer.page { display: none; }
+}
+
+@media (max-width: 620px) {
+  .field { grid-template-columns: 1fr; gap: 2px; }
+  .field > .label { text-align: left; border-right: none; padding-right: 0; }
+  .entry { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* 「還缺什麼」：與解讀區隔開，視覺上明確是「尚未完成」而非結論 */
+.field.gaps > .body { color: #613400; background: #fffbe6; border-left: 3px solid #faad14;
+                      padding: 6px 10px; border-radius: 3px; }
+
+/* ---------- 記錄層（頁尾折疊區）與 artifacts ---------- */
+/* 記錄層是給 agent 爬的完整紀錄，人可以展開確認。預設收合，視覺上要明顯次於主要工作項。 */
+details.record { border: 1px solid var(--line-soft); border-radius: 4px; margin-top: 8px; }
+details.record > summary { cursor: pointer; padding: 10px 14px; font-size: 14px;
+                           color: var(--ink-soft); list-style: none; }
+details.record > summary::before { content: "▸ "; color: var(--ink-faint); }
+details.record[open] > summary::before { content: "▾ "; }
+details.record > summary::-webkit-details-marker { display: none; }
+details.record .inner { padding: 0 14px 12px; }
+.rec { padding: 12px 0; border-top: 1px solid var(--line-soft); font-size: 14px; }
+.rec .t { font-weight: 600; }
+.rec .why { color: var(--ink-faint); font-size: 13px; margin-top: 4px; }
+
+/* artifacts：原料索引，不是敘述，所以用等寬字排成清單 */
+.art { margin-top: 8px; font-size: 13px; }
+.art .t { color: var(--ink-faint); }
+.art ul { margin: 2px 0 0; padding-left: 18px; }
+.art code { font-size: 12px; }
+
+@media print { details.record { display: none; } }
