@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- daily-log:generated — 這個檔由 render.py 產生，手改會被覆蓋 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-09-06 工作日誌</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="page"><h1 class="date">2026-09-06</h1>
+<div class="meta">研究紀錄流程整備　·　涵蓋 09-05 00:22 ~ 09-06 00:00</div>
+<div class="headline">個人 agent 設定的載入入口是空檔、同一套規範同時存在五項與四項兩個版本；當天照日誌→週報的用途改建出四個技能，並把「產生日誌」和「上傳 GitHub」拆成兩件事</div>
+</header>
+
+<nav class="outline"><h2 class="section">今日概覽</h2><ol><li><a href="#item-1">清點 39 個 SKILL.md 與各處的 AGENTS.md／CLAUDE.md，發現規則多半沒被載入、而且同一套規範有兩個版本在跑；當天照「每天寫日誌、每週彙成給教授看的週報」這個用途，改建出四個技能並安裝</a></li><li><a href="#item-2">[翻案] 稽核的結論是產生日誌、產生週報、上傳 GitHub 應該是三個分開的操作；新建的四個技能照這個結論寫，取消了舊版的固定發布、固定開會日與逐階段確認</a></li></ol></nav>
+
+<section class="item" id="item-1">
+<h3><span class="num">01</span>稽核 AGENTS.md 與技能庫，並改建成 research-daily-log 等四個技能<span class="badge kind">工具</span><span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>現在這套 agent 設定和技能庫，還跟得上我實際在做的事嗎？</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>不是去比對每個技能有沒有跟上游最新版，而是比對「設定寫的」與「近期實際做的」。先掃近 50 個任務清單、抽讀其中 6 個，再清點完整技能庫的 39 個 SKILL.md，逐項標成確定失效、需要調整、仍值得保留三類。</p>
+<p>第二段把用途講明白——碩班學生，每天要留研究日誌，每週彙成給教授看的週報，風格以用途說故事為主——照這個用途挑出四個核心技能，寫成 SKILL.md 並裝進 Codex 的個人技能目錄。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>稽核找到六個問題，性質分成三類：規則沒被載入（前三項）、同一套規則有兩個版本（第四項）、流程比實際需求重（後兩項）。</p>
+<p>四個技能都已寫完並安裝：<code>research-daily-log</code>（研究日誌與證據紀錄）、<code>research-weekly-report</code>（以用途串成故事的週報）、<code>research-meeting-slides</code>（meeting 簡報與講稿）、<code>research-output-review</code>（數字、證據與完成狀態查核）。安裝後有比對過檔案內容與原稿一致。</p>
+<p>另外查過兩份 knowledge-workbench 副本的 9 個檔案完全一致，沒有版本漂移——這一項是查了之後排除的，不是問題。</p><figure><div class="scroll-x"><table><thead><tr><th>問題</th><th>性質</th></tr></thead><tbody><tr><td>Codex 的全域 AGENTS.md 是空檔</td><td>個人規則沒有透過這個檔生效</td></tr><tr><td>knowledge-workbench 放在一般專案目錄</td><td>不保證自動載入，本次可用技能清單裡也沒有它</td></tr><tr><td>Claude Code 那側的 skills 只有空資料夾</td><td>完整技能其實放在 sessions／unified-skills 底下</td></tr><tr><td>同一套 unified-skills 裡 AGENTS.md 寫五項原則、CLAUDE.md 還停在四項</td><td>同一份規範有兩個版本在跑</td></tr><tr><td>研究路由預設導向十階段論文流程、每階段要求確認</td><td>對常做的方法對帳與簡報審查過重</td></tr><tr><td>HTML 簡報技能要求小改之後也符合它整套格式</td><td>會把局部修改擴大成無關的結構改寫</td></tr></tbody></table></div><figcaption>稽核找到的六個問題</figcaption></figure></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>問題的重心不在規則寫得對不對，而在<strong>規則有沒有被載入</strong>——前三項都是入口問題，內容寫得再好也沒作用。第四項則說明版本分歧已經真的發生了，不是理論風險：同一套規範的兩個入口檔各自停在不同版本。</p>
+<p>對之後的影響是：改設定之前要先確認改的那個檔真的會被讀到，否則會出現「改了但行為沒變」而查不出原因。至於最小改動、證據查核、樣本與分母口徑、講稿同步這幾條原則，稽核判定仍然適用，不需要動。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>四個技能都還沒在新任務裡實測過會不會自動觸發，只做了名稱、metadata、未完成標記與參考路徑的基本檢查；官方的完整驗證器因為環境缺 PyYAML 沒跑起來。也沒有逐一比對每個技能與其上游最新版的差異。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><p>掃描來源：近 50 個任務清單，抽讀其中 6 個；技能庫清點到 39 個 SKILL.md。 安裝時 Codex 的技能目錄在可寫範圍之外，先申請四個子資料夾的寫入權限被檔案系統拒絕，改申請技能目錄本身的寫入權限後才成功。</p><div class="art"><div class="t">碰過的檔案</div><ul><li><code>Codex/2026-09-05/0/outputs/agent-skills-audit-2026-09-05.md</code></li><li><code>Codex/2026-09-05/0/outputs/research-report-skills/使用說明.md</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>Codex 個人技能目錄新增 research-daily-log／research-weekly-report／research-meeting-slides／research-output-review 四個技能</code></li></ul></div></div></details>
+</section>
+<section class="item" id="item-2">
+<h3><span class="num">02</span>新建的 research-weekly-report 不寫死固定開會日與自動發布，把產生和上傳拆開<span class="badge kind">工具</span><span class="badge done">完成</span></h3>
+<div class="field question"><div class="label">問題</div><div class="body"><p>週報要在固定時間自動生成並發布，還是產生和發布該分開？</p></div></div>
+<div class="field approach"><div class="label">做法</div><div class="body"><p>這條不是新設計出來的，是稽核既有技能時比對出來的：文件同時寫著「週五到週四」和「週三晚上生成」兩種週界，而現行說明又同時稱完全依賴舊的 <code>daily-progress-report</code>、實際上週報已改讀 <code>daily-log</code> 的日誌 JSON。三處不一致指向同一個成因——把「產生」和「發布」綁成一件事之後，時間點就被迫寫死。</p></div></div>
+<div class="field result"><div class="label">結果</div><div class="body"><p>新建的 <code>research-weekly-report</code> 等技能取消了三項舊要求：固定發布、固定開會日、逐階段確認。稽核報告把待修的點列成三條：資料來源銜接（說明還停在舊管線）、週期與截稿時間（要區分完整週報與截至當下的草稿）、敘事與發布拆開。</p>
+<p>這與 09-03 定下的做法方向相反——當時的決定是週三晚上固定整合日誌生成週報、每晚固定發布。</p></div></div>
+<div class="field interpretation"><div class="label">解讀</div><div class="body"><p>值得注意的是這只改了 Codex 那側新建的技能，<strong>本機的排程沒有動</strong>：每晚產生並發布日誌、每週三晚上生成週報這兩個排程照舊在跑。所以現在有兩套方向相反的做法並存，之後要嘛把排程也拆成產生與發布兩步，要嘛承認排程場景本來就需要綁定、只在手動路徑上分開。在做出選擇之前，不要把「已經拆開」當成現況。</p></div></div>
+<div class="field gaps"><div class="label">還缺</div><div class="body"><p>沒有決定本機排程要不要跟著改，也沒有訂出「什麼情況下才需要綁定」的判準；新技能的週界與截稿時間怎麼寫也還沒定案。</p></div></div>
+<details class="detail"><summary>執行細節</summary><div class="inner"><div class="art"><div class="t">碰過的檔案</div><ul><li><code>Codex/2026-09-05/0/outputs/agent-skills-audit-2026-09-05.md</code></li></ul></div></div></details>
+</section>
+
+<section class="block"><details class="record"><summary>本日其他 2 項（完整紀錄）</summary><div class="inner"><div class="rec"><div class="t">用 daily-log 產生並發布這一份日誌<span class="badge done">完成</span></div><p>每晚的排程用實驗室共用的 daily-log skill 產生當天日誌，通過秘密掃描後推到公開的 linr-daily repo。這一輪先跑健檢確認 python3 走的是轉接版（3.13.15、utf8 模式開啟）、三項路徑設定都正確，再從全域游標 09-05 00:22 掃到 09-06 00:00。掃描落在 7 個 session、316 段對話、16 則使用者訊息，日期標籤因為已跨過午夜而落在 09-06——依 daily-log 的設計接受這個標籤，實際涵蓋區間寫在 covers 欄位。候選共 4 項，分層結果是呈現 2 項、記錄 1 項、邊界 1 項。掃描期間沒有任何 git commit，落地信號幾乎全部來自對話裡的工具呼叫。當天有兩段對話判定與研究工作無關而排除：一段是螢幕選購的硬體規格查詢，一段是學校報到與宿舍的行政事務。結束狀態：日誌已渲染、游標已推進、內容已推上遠端。</p><div class="why">未進主要工作項：分數 7 分落在邊界（6~7），依規則邊界項一律進記錄層；而且這是排程自己的執行紀錄，依規則最多只進記錄層。</div><div class="art"><div class="t">跑過的指令</div><ul><li><code>collect_day.sh（無參數，從全域游標掃到現在）</code></li><li><code>signals.py / candidates.py / validate_log.py / verify_evidence.py / render.py / check_readability.py</code></li><li><code>collect_day.sh --commit（推進游標）</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>日誌 repo 的 daily/2026-09-06.html 與 .data/2026-09-06.json</code></li></ul></div></div><div class="rec"><div class="t">排程去遠端 server 彙整工作日誌，連續第 8 輪沒有活動跡象<span class="badge done">完成</span></div><p>每晚的排程去 bip8 server 蒐當天的工作證據，再把摘要附回遠端工作日誌檔尾。這一輪照設計先跑獨立活動探針（找 24 小時內變動過的檔案，排除版控與快取目錄），結果 0 個檔案；輔助檢查列出工作目錄樹，最新修改時間停在 8/28 凌晨，與 24 小時的窗口不重疊，佐證探針結果。日誌主體的雜湊值與上一輪記錄的值完全相同，代表主體確實沒有被手動更新過。三項證據一致，判定為「無工作跡象」，而不是「有工作但沒寫進日誌」。摘要已附回遠端日誌檔尾並以 tail 驗證寫入成功。這一輪多了一件值得注意的事：主體已連續 12 輪未變動，整棵工作目錄樹的最後改動停在 8/28、距今 8 天，已經超出「今天剛好沒做事」的範圍。排程因此提出建議——確認是不是已經改到別的機器或路徑工作（探測範圍沒涵蓋到），如果是，這個排程目前每天都在報「無事」，可以考慮暫停或調整探測路徑。</p><div class="why">未進主要工作項：分數 5 分（使用者只有排程觸發、沒有本機檔案落地），本來就屬於記錄層；排程自己的執行紀錄依規則最多進記錄層。</div><div class="art"><div class="t">跑過的指令</div><ul><li><code>find -newermt &quot;24 hours ago&quot;（活動探針，0 檔）</code></li><li><code>剝掉彙整段落後對日誌主體算 SHA，與上一輪比對</code></li></ul></div><div class="art"><div class="t">產出</div><ul><li><code>遠端家目錄的 worklog Markdown 檔尾新增一段每日彙整</code></li></ul></div></div></div></details></section>
+
+<footer class="page"><a href="2026-09-05.html">← 2026-09-05</a><a href="../index.html">所有日誌</a><span></span></footer>
+</div>
+</body>
+</html>
